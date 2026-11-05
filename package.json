@@ -39,7 +39,7 @@
     "oxlint": "1.91.0",
     "oxlint-tsgolint": "7.0.2006",
     "skills": "1.7.6",
-    "slopless": "0.2.40",
+    "slopless": "0.2.42",
     "textlint": "15.8.0",
     "textlint-plugin-review": "0.4.1",
     "textlint-rule-en-max-word-count": "2.0.1",

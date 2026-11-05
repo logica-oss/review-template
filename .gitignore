@@ -1,6 +1,24 @@
+# Dependencies
 node_modules/
+
+# Ruby
 Gemfile.lock
-bun.lockb
-.sass-cache/
+
+# Build output
 dist/
+.sass-cache/
 articles/_refiles/
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# dotenv environment variable files
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# vscode setting folder
+.vscode/
+devcontainer-lock.json

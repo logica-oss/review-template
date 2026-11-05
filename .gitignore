@@ -23,7 +23,7 @@ articles/_refiles/
 .vscode/
 devcontainer-lock.json
 
-# Agent files
-.agents/skills/*
-!.agents/skills/google-tech-writing/
-!.agents/skills/japanese-tech-writing/
+# Agent files (blacklist: only externally synced skills are ignored)
+.agents/skills/slopless
+.agents/skills/stop-slop/
+.agents/skills/yomiyasu/

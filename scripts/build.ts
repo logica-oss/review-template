@@ -2,7 +2,7 @@ import { readFile, rm } from "node:fs/promises";
 import path from "node:path";
 
 import { $ } from "bun";
-import yaml from "js-yaml";
+import { load } from "js-yaml";
 
 interface BookConfig {
   contentdir?: string | undefined;
@@ -13,13 +13,12 @@ const DIST_DIR = "dist";
 
 const loadBookConfig = async (): Promise<BookConfig> => {
   const raw = await readFile(path.join(ARTICLES_DIR, "config.yml"), "utf8");
-  const parsed: unknown = yaml.load(raw);
-  if (typeof parsed !== "object" || parsed === null) {
+  const parsed: unknown = load(raw);
+  if (typeof parsed !== "object" || parsed === null || !("contentdir" in parsed)) {
     return {};
   }
 
-  const record = parsed as Record<string, unknown>;
-  const contentdir = record["contentdir"];
+  const contentdir: unknown = parsed.contentdir;
 
   return {
     contentdir: typeof contentdir === "string" ? contentdir : undefined,

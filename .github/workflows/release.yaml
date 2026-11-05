@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  release:
+    name: Release
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Create tag
+        id: tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REMOTE_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          PREFIX=$(TZ=Asia/Tokyo date +'%Y.%m%d')
+          MAX=$(git ls-remote --tags "${REMOTE_URL}" "refs/tags/${PREFIX}.*" | awk -F. '$NF ~ /^[0-9]+$/ {print $NF}' | sort -n | tail -1)
+          TAG="${PREFIX}.$(( ${MAX:--1} + 1 ))"
+          git tag "${TAG}" "$(git rev-parse HEAD)"
+          git push "${REMOTE_URL}" "${TAG}"
+          echo "tag=${TAG}" >> "${GITHUB_OUTPUT}"
+        shell: bash
+      - name: Generate release notes
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        with:
+          script: |
+            await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: process.env.TAG,
+              generate_release_notes: true,
+            });

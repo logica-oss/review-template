@@ -29,5 +29,9 @@ jobs:
         run: bun run lint
       - name: Format
         run: bun run format
+      - name: Sync Agent Config
+        uses: logica-oss/synac@18e9665aa5e12b0705225031dfb6f20d234ec48b # v0.2.0
+        with:
+          verify: "false"
       - name: Autofix text files
         uses: logica-oss/actions-toolkit/autofix-text@a9b5747568c5c53f2011d686212afcd21802621d # v1.2.4

@@ -4,15 +4,13 @@ The document is a brief guide for Re:VIEW markup syntax.
 
 Re:VIEW is based on EWB of ASCII (now KADOKAWA), influenced RD and other Wiki system's syntax.
 
-This document explains about the format of Re:VIEW 5.1.
-
 ## Paragraph
 
 Paragraphs are separated by an empty line.
 
 Usage:
 
-```
+```review
 This is a paragraph, paragraph,
 and paragraph.
 
@@ -60,7 +58,7 @@ Usage:
 
 Columns are closed with next headings.
 
-```
+```review
 == head 01
 
 ===[column] a column
@@ -90,13 +88,13 @@ There are some more options of headings.
 
 ## Itemize
 
-Itemize (ul in HTML) uses ` *` (one space char and asterisk).
+Itemize (ul in HTML) uses `*` (one space char and asterisk).
 
-Nested itemize is like ` **`, ` ***`.
+Nested itemize is like `**`, `***`.
 
 Usage:
 
-```
+```review
  * 1st item
  ** nested 1st item
  * 2nd item
@@ -111,12 +109,12 @@ You should add emply lines between Paragraphs and Itemize (same as Ordered and N
 
 ## Ordered Itemize
 
-Ordered itemize (ol in HTML) uses ` 1. ...`, ` 2. ...`, ` 3. ...`.
+Ordered itemize (ol in HTML) uses `1. ...`, `2. ...`, `3. ...`.
 They aren't nested.
 
 Usage:
 
-```
+```review
  1. 1st condition
  2. 2nd condition
  3. 3rd condition
@@ -124,7 +122,7 @@ Usage:
 
 The value of Number is ignored.
 
-```
+```review
  1. 1st condition
  1. 2nd condition
  1. 3rd condition
@@ -164,28 +162,30 @@ Block commands are used for multiple lines to add some actions (ex. decoration).
 
 The syntax of block commands is below:
 
-```
+```review
 //command[option1][option2]...{
 (content lines, sometimes separated by empty lines)
   ...
 //}
 ```
 
-If there is no options, the begining line is just `//command{`. When you want to use a character `]`, you must use escaping `\]`.
+If there is no options, the begining line is just `//command{`.  
+When you want to use a character `]`, you must use escaping `\]`.
 
 Some block commands has no content.
 
-```
+```review
 //command[option1][option2]...
 ```
 
 Inline commands are used in block, paragraphes, headings, block contents and block options.
 
-```
+```review
 @<command>{content}
 ```
 
-When you want to use a character `}` in inline content, you must use escaping `\}`. If the content ends with `\`, it must be written `\\`. (ex. `@<tt>{\\}`)
+When you want to use a character `}` in inline content, you must use escaping `\}`.  
+If the content ends with `\`, it must be written `\\`. (ex. `@<tt>{\\}`)
 
 There are some limitations in blocks and inlines.
 
@@ -195,9 +195,10 @@ There are some limitations in blocks and inlines.
 
 ### Fence notation for inline commands
 
-You may be tired of escaping when you use a large number of inline commands including `{` and `\`. By surrounding the contents with `$ $` or `| |` instead of `{ }`, you can write without escaping.
+You may be tired of escaping when you use a large number of inline commands including `{` and `\`.  
+By surrounding the contents with `$ $` or `| |` instead of `{ }`, you can write without escaping.
 
-```
+```review
 @<command>$content$
 @<command>|content|
 ```
@@ -214,7 +215,10 @@ Since this notation is substitute, please avoid abuse.
 
 ## Code List
 
-Code list like source codes is `//list`. If you don't need numbers, you can use `em` prefix (as embedded). If you need line numbers, you can use `num` postfix. So you can use four types of lists.
+Code list like source codes is `//list`.  
+If you don't need numbers, you can use `em` prefix (as embedded).  
+If you need line numbers, you can use `num` postfix.  
+So you can use four types of lists.
 
 - `//list[ID][caption][language]{ ... //}`
   - normal list. language is optional.
@@ -303,7 +307,7 @@ You can use them with different style with CSS (in HTML) and style file (in LaTe
 
 Usage:
 
-```
+```review
 When you ..., see @<list>{hello}.
 ```
 
@@ -324,7 +328,7 @@ You can use inline commands in this command.
 
 Usage:
 
-```
+```review
 //cmd{
 $ @<b>{ls /}
 //}
@@ -340,7 +344,7 @@ When publishing, it's simply ignored.
 
 Usage:
 
-```
+```review
 //image[unixhistory][a brief history of UNIX-like OS]{
           System V
             +----------- SVr4 --> Commercial UNIX（Solaris, AIX, HP-UX, ...）
@@ -352,21 +356,25 @@ V1 --> V6 --|
 //}
 ```
 
-The third option is used to define the scale of images. `scale=X` is scaling for page width (`scale=0.5` makes image width to be half of page width).
-If you'd like to use different values for each builders, such as HTML and TeX, you can specify the target builders using `::`. Example: `html::style="transform: scale(0.5);",latex::scale=0.5`
+The third option is used to define the scale of images.  
+`scale=X` is scaling for page width (`scale=0.5` makes image width to be half of page width).
+If you'd like to use different values for each builders, such as HTML and TeX, you can specify the target builders using `::`.  
+Example: `html::style="transform: scale(0.5);",latex::scale=0.5`
 
 When you want to refer images such as "see figure 1.", you can use
 inline reference markup like `@<img>{unixhistory}`.
 
-When you refer a image in the other chapter, you can use the same way as a list reference. To refer a image `unixhistory` in `advanced.re`, use `@<img>{advanced|unixhistory}`.
+When you refer a image in the other chapter, you can use the same way as a list reference.  
+To refer a image `unixhistory` in `advanced.re`, use `@<img>{advanced|unixhistory}`.
 
 When you want to use images in paragraph or other inline context, you can use `@<icon>`.
 
 ### Finding image pathes
 
-The order of finding image is as follows. The first matched one is used.
+The order of finding image is as follows.  
+The first matched one is used.
 
-```
+```text
 1. <imgdir>/<builder>/<chapid>/<id>.<ext>
 2. <imgdir>/<builder>/<chapid>-<id>.<ext>
 3. <imgdir>/<builder>/<id>.<ext>
@@ -389,7 +397,8 @@ For each builder, image files are searched in order of the following extensions,
 
 ### Inline Images
 
-When you want to use images in paragraph, you can use the inline command `@<icon>{ID}`. The order of finding images are same as `//image`.
+When you want to use images in paragraph, you can use the inline command `@<icon>{ID}`.  
+The order of finding images are same as `//image`.
 
 ## Images without caption counter
 
@@ -398,7 +407,7 @@ caption is optional.
 
 Usage:
 
-```
+```review
 //indepimage[unixhistory2]
 ```
 
@@ -406,11 +415,12 @@ Note that there are similar markup `//numberlessimage`, but it is deprecated.
 
 ## Figures with graph tools
 
-Re:VIEW generates image files using graph tool with command `//graph[filename][commandname][caption]`. The caption is optional.
+Re:VIEW generates image files using graph tool with command `//graph[filename][commandname][caption]`.  
+The caption is optional.
 
 Usage: using with Gnuplot
 
-```
+```review
 //graph[sin_x][gnuplot]{
 plot sin(x)
 //}
@@ -419,24 +429,27 @@ plot sin(x)
 You can use `graphviz`, `gnuplot`, `blockdiag`, `aafigure`, and `plantuml` as the command name.
 Before using these tools, you should installed them and configured path appropriately.
 
-- Graphviz ( https://www.graphviz.org/ ) : set path to `dot` command
-- Gnuplot ( http://www.gnuplot.info/ ) : set path to `gnuplot` command
-- Blockdiag ( http://blockdiag.com/ ) : set path to `blockdiag` command. Install ReportLab also to make a PDF
-- aafigure ( https://launchpad.net/aafigure ) : set path to `aafigure` command
-- PlantUML ( http://plantuml.com/ ) : set path to `java` command. place `plantuml.jar` on working folder
+- Graphviz (<https://www.graphviz.org/>) : set path to `dot` command
+- Gnuplot (<http://www.gnuplot.info/>) : set path to `gnuplot` command
+- Blockdiag (<http://blockdiag.com/>) : set path to `blockdiag` command. Install ReportLab also to make a PDF
+- aafigure (<https://launchpad.net/aafigure>) : set path to `aafigure` command
+- PlantUML (<http://plantuml.com/>) : set path to `java` command. place `plantuml.jar` on working folder
 
 ## Tables
 
-The markup of table is `//table[ID][caption]{ ... //}`
+The markup of table is `//table[ID][caption]{ ... //}`  
 You can separate header and content with `------------`.
 
-The columns are splitted by TAB character. Write `.` to blank cells. When the first character in the cell is `.`, the character is removed. If you want to write `.` at the first, you should write `..`.
+The columns are splitted by TAB character.  
+Write `.` to blank cells.  
+When the first character in the cell is `.`, the character is removed.  
+If you want to write `.` at the first, you should write `..`.
 
 When you want to use an empty column, you write `.`.
 
 Usage:
 
-```
+```review
 //table[envvars][Important environment varialbes]{
 Name            Comment
 -------------------------------------------------------------
@@ -458,7 +471,7 @@ You can use inline markup in the tables.
 
 `//table` without arguments creates a table without numbering and captioning.
 
-```
+```review
 //table{
 ...
 //}
@@ -466,7 +479,7 @@ You can use inline markup in the tables.
 
 To create a table without numbering but with captioning, use `//emtable`.
 
-```
+```review
 //emtable[caption]{
 ...
 //}
@@ -476,7 +489,7 @@ To create a table without numbering but with captioning, use `//emtable`.
 
 When using LaTeX or IDGXML builder, you can specify each column width of the table with `//tsize` block command.
 
-```
+```review
 //tsize[|builder|width-of-column1,width-of-column2,...]
 ```
 
@@ -488,11 +501,12 @@ When using LaTeX or IDGXML builder, you can specify each column width of the tab
 
 ### Complex Table
 
-If you want to use complex tables, you can use `imgtable` block command with an image of the table. `imgtable` supports numbering and `@<table>`.
+If you want to use complex tables, you can use `imgtable` block command with an image of the table.  
+`imgtable` supports numbering and `@<table>`.
 
 Usage:
 
-```
+```review
 //imgtable[complexmatrix][very complex table]{
 to use image "complexmatrix".
 The rule of finding images is same as image command.
@@ -505,7 +519,7 @@ You can use `//quote{ ... //}` as quotations.
 
 Usage:
 
-```
+```review
 //quote{
 Seeing is believing.
 //}
@@ -530,9 +544,9 @@ Some block commands are used for short column.
 
 The content is like paragraph; separated by empty lines.
 
-From Re:VIEW 5.0, it is also possible to include itemize, figures and tables in short columns.
+It is also possible to include itemize, figures and tables in short columns.
 
-```
+```review
 //note{
 
 With ordered itemize.
@@ -549,7 +563,7 @@ You can use `//footnote` to write footnotes.
 
 Usage:
 
-```
+```review
 You can get the packages from support site for the book.@<fn>{site}
 You should get and install it before reading the book.
 //footnote[site][support site of the book: http://i.loveruby.net/ja/stdcompiler ]
@@ -578,19 +592,19 @@ You cannot use footnote and footnotemark/footnotetext at the same time.
 
 When you want to use a bibliography, you should write them in the file `bib.re`.
 
-```
+```review
 //bibpaper[cite][caption]{..comment..}
 ```
 
 The comment is optional.
 
-```
+```review
 //bibpaper[cite][caption]
 ```
 
 Usage:
 
-```
+```review
 //bibpaper[lins][Lins, 1991]{
 Refael D. Lins. A shared memory architecture for parallel study of
 algorithums for cyclic reference_counting. Technical Report 92,
@@ -603,7 +617,7 @@ When you want to refer some references, You should write as:
 
 Usage:
 
-```
+```review
 … is the well-known project.(@<bib>{lins})
 ```
 
@@ -614,7 +628,7 @@ You can write as `//read{ ... //}`.
 
 Usage:
 
-```
+```review
 //lead{
 In the chapter, I introduce brief summary of the book,
 and I show the way how to write a program in Linux.
@@ -627,7 +641,7 @@ You can use `//texequation{ ... //}` to insert mathematical equations of LaTeX.
 
 Usage:
 
-```
+```review
 //texequation{
 \sum_{i=1}^nf_n(x)
 //}
@@ -635,7 +649,7 @@ Usage:
 
 If you'd like to assign a number like 'Equation 1.1`, specify the identifier and caption.
 
-```
+```review
 //texequation[emc][The Equivalence of Mass and Energy]{
 \sum_{i=1}^nf_n(x)
 //}
@@ -645,7 +659,8 @@ To reference this, use the inline command `@<eq>`.
 
 There is `@<m>{ ... }` for inline (see "Fence notation for inline commands" section also).
 
-Whether LaTeX formula is correctly displayed or not depends on the processing system. PDFMaker uses LaTeX internally, so there is no problem.
+Whether LaTeX formula is correctly displayed or not depends on the processing system.  
+PDFMaker uses LaTeX internally, so there is no problem.
 
 In EPUBMaker and WEBMaker, you can choose between MathML conversion, MathJax conversion, and imaging.
 
@@ -655,7 +670,7 @@ Install MathML library (`gem install math_ml`).
 
 Specify in config.yml as follows:
 
-```
+```yaml
 math_format: mathml
 ```
 
@@ -665,17 +680,20 @@ Whether it is displayed properly in MathML depends on your viewer or browser.
 
 Specify in config.yml as follows:
 
-```
+```yaml
 math_format: mathjax
 ```
 
-MathJax JavaScript module is loaded from the Internet. Because the EPUB specification prohibits loading files from external, enabling this feature will cause the EPUB file to fail validation. Also MathJax will not work in almost all EPUB readers, but may be available with CSS formatting processor.
+MathJax JavaScript module is loaded from the Internet.  
+Because the EPUB specification prohibits loading files from external, enabling this feature will cause the EPUB file to fail validation.  
+Also MathJax will not work in almost all EPUB readers, but may be available with CSS formatting processor.
 
 ### imaging case
 
-This way calls LaTeX internally and images it with an external tool. Image files will be placed in `images/_review_math` folder.
+This way calls LaTeX internally and images it with an external tool.  
+Image files will be placed in `images/_review_math` folder.
 
-You need TeXLive or other LaTeX environment. Modify the parameters of `texcommand`,` texoptions`, `dvicommand`,` dvioptions` in config.yml as necessary.
+You need TeXLive or other LaTeX environment. Modify the parameters of `texcommand`, `texoptions`, `dvicommand`, `dvioptions` in config.yml as necessary.
 
 In addition, external tools for image conversion are also needed. Currently, it supports the following two methods.
 
@@ -684,13 +702,13 @@ In addition, external tools for image conversion are also needed. Currently, it 
 
 By setting in config.yml,
 
-```
+```yaml
 math_format: imgmath
 ```
 
 it is set as follows:
 
-```
+```yaml
 imgmath_options:
   # format. png|svg
   format: png
@@ -719,7 +737,7 @@ imgmath_options:
 
 For example, to make SVG:
 
-```
+```yaml
 math_format: imgmath
 imgmath_options:
   format: svg
@@ -728,9 +746,9 @@ imgmath_options:
 
 By default, the command specified in `pdfcrop_pixelize_cmd` takes the filename of multi-page PDF consisting of one formula per page.
 
-If you want to use the `sips` command or the` magick` command, they can only process a single page, so you need to set `extract_singlepage: true` to extract the specified page from the input PDF. `pdfjam` command (in TeXLive) is used to extract pages.
+If you want to use the `sips` command or the `magick` command, they can only process a single page, so you need to set `extract_singlepage: true` to extract the specified page from the input PDF. `pdfjam` command (in TeXLive) is used to extract pages.
 
-```
+```yaml
 math_format: imgmath
 imgmath_options:
   extract_singlepage: true
@@ -744,23 +762,13 @@ imgmath_options:
 
 To create PDF math images:
 
-```
+```yaml
 math_format: imgmath
 imgmath_options:
   format: pdf
   extract_singlepage: true
   pdfextract_cmd: "pdftk A=%i cat A%p output %o"
   pdfcrop_pixelize_cmd: "mv %i %o"
-```
-
-To set the same setting as Re:VIEW 2:
-
-```
-math_format: imgmath
-imgmath_options:
-  converter: dvipng
-  fontsize: 12
-  lineheight: 14.3
 ```
 
 ## Spacing
@@ -775,7 +783,7 @@ imgmath_options:
 
 Usage:
 
-```
+```review
 Insert one blank line below.
 
 //blankline
@@ -788,7 +796,10 @@ Insert two blank line below.
 
 ## Referring headings
 
-There are 3 inline commands to refer a chapter. These references use Chapter ID. The Chapter ID is filename of chapter without extentions. For example, Chapter ID of `advanced.re` is `advance`.
+There are 3 inline commands to refer a chapter.  
+These references use Chapter ID.  
+The Chapter ID is filename of chapter without extentions.  
+For example, Chapter ID of `advanced.re` is `advance`.
 
 - `@<chap>{ChapterID}` : chapter number (ex. `Chapter 17`).
 - `@<title>{ChapterID}` : chapter title
@@ -799,13 +810,13 @@ You can use deeper section with separator `|`.
 
 Usage:
 
-```
+```review
 @<hd>{intro|first section}
 ```
 
 If section title is unique, `|` is not needed.
 
-```
+```review
 @<hd>{first section}
 ```
 
@@ -813,13 +824,13 @@ If you want to refer another chapter (file), you should add the chapter ID.
 
 Usage:
 
-```
+```review
 @<hd>{preface|Introduction|first section}
 ```
 
 When section has the label, you can use the label.
 
-```
+```review
 =={intro} Introduction
 :
 === first section
@@ -833,13 +844,13 @@ You can refer the heading of a column with `@<column>`.
 
 Usage:
 
-```
+```review
 @<column>{The usage of Re:VIEW}
 ```
 
 You can refer labels.
 
-```
+```review
 ==[column]{review-application} The application of Re:VIEW
 :
 @<column>{review-application}
@@ -854,7 +865,7 @@ If you want to use `,` in URL, use `\,`.
 
 Usage:
 
-```
+```review
 @<href>{http://github.com/, GitHub}
 @<href>{http://www.google.com/}
 @<href>{#point1, point1 in document}
@@ -864,16 +875,19 @@ Usage:
 
 ## Words file
 
-By creating a word file with key / value pair, `@<w>{key}` or `@<wb>{key}` will be expanded the key to the corresponding value. `@<wb>` means bold style.
+By creating a word file with key / value pair, `@<w>{key}` or `@<wb>{key}` will be expanded the key to the corresponding value.  
+`@<wb>` means bold style.
 
-This word file is a CSV file with extension .csv. This first columns is the key, the second row is the value.
+This word file is a CSV file with extension .csv.  
+This first columns is the key, the second row is the value.
 
-```
+```csv
 "LGPL","Lesser General Public License"
 "i18n","""i""nternationalizatio""n"""
 ```
 
-Specify the word file path in `words_file` parameter of `config.yml`. You can specify multiple word files as `word_file: ["common.csv", "mybook.csv"]`.
+Specify the word file path in `words_file` parameter of `config.yml`.  
+You can specify multiple word files as `word_file: ["common.csv", "mybook.csv"]`.
 
 Usage:
 
@@ -883,11 +897,12 @@ Usage:
 
 (In HTML:)
 
-```
+```text
 Lesser General Public License, ★"i"nternationalizatio"n"☆
 ```
 
-Values are escaped by the builder. It is not possible to include inline commands in the value.
+Values are escaped by the builder.  
+It is not possible to include inline commands in the value.
 
 ## Comments
 
@@ -895,7 +910,7 @@ If you want to write some comments that do not output in the document, you can u
 
 Usage:
 
-```
+```review
 #@# Must one empty line
 ```
 
@@ -903,7 +918,7 @@ If you want to write some warnings, use `#@warn(...)`.
 
 Usage:
 
-```
+```review
 #@warn(TBD)
 ```
 
@@ -911,7 +926,7 @@ When you want to write comments in the output document, use `//comment` and `@<c
 
 Usage:
 
-```
+```review
 @<comment>{TODO}
 ```
 
@@ -923,7 +938,7 @@ When you want to write non-Re:VIEW line, use `//raw` or `//embed`.
 
 Usage:
 
-```
+```review
 //raw[|html|<div class="special">\nthis is a special line.\n</div>]
 ```
 
@@ -936,7 +951,7 @@ Output:
 
 (In HTML:)
 
-```
+```text
 <div class="special">
 this is a special line.
 </div>
@@ -950,7 +965,7 @@ Note: `//raw` and `@<raw>` may break structured document easily.
 
 Usage:
 
-```
+```review
 //embed{
 <div class="special">
 this is a special line.
@@ -970,7 +985,7 @@ Output:
 
 (In HTML:)
 
-```
+```text
 <div class="special">
 this is a special line.
 </div>
@@ -980,11 +995,14 @@ this is a special line.
 
 ### Nested itemize block
 
-Re:VIEW itemize blocks basically cannot express nested items. Also, none of itemize blocks allow to contain another itemize block or paragraph/image/table/list.
+Re:VIEW itemize blocks basically cannot express nested items.  
+Also, none of itemize blocks allow to contain another itemize block or paragraph/image/table/list.
 
-As a workaround, Re:VIEW 4.2 provides an experimental `//beginchild` and `//endchild`. If you want to include something in an itemize block, enclose it with `//beginchild` and `//endchild`. It is also possible to create a multiple nest.
+As a workaround, Re:VIEW 4.2 provides an experimental `//beginchild` and `//endchild`.  
+If you want to include something in an itemize block, enclose it with `//beginchild` and `//endchild`.  
+It is also possible to create a multiple nest.
 
-```
+```review
  * UL1
 
 //beginchild
@@ -1020,29 +1038,31 @@ Output:
 
 (In HTML:)
 
-```
+```html
 <ul>
-<li>UL1
-<ol>
-<li>UL1-OL1
-<p>UL1-OL1-PARAGRAPH</p>
-<ul>
-<li>UL1-OL1-UL1</li>
-<li>UL1-OL1-UL2</li>
-</ul>
-</li>
+  <li>
+    UL1
+    <ol>
+      <li>
+        UL1-OL1
+        <p>UL1-OL1-PARAGRAPH</p>
+        <ul>
+          <li>UL1-OL1-UL1</li>
+          <li>UL1-OL1-UL2</li>
+        </ul>
+      </li>
 
-<li>UL1-OL2</li>
-</ol>
-<dl>
-<dt>UL1-DL1</dt>
-<dd>UL1-DD1</dd>
-<dt>UL1-DL2</dt>
-<dd>UL1-DD2</dd>
-</dl>
-</li>
+      <li>UL1-OL2</li>
+    </ol>
+    <dl>
+      <dt>UL1-DL1</dt>
+      <dd>UL1-DD1</dd>
+      <dt>UL1-DL2</dt>
+      <dd>UL1-DD2</dd>
+    </dl>
+  </li>
 
-<li>UL2</li>
+  <li>UL2</li>
 </ul>
 ```
 
@@ -1052,7 +1072,7 @@ Output:
 
 ### Styles
 
-```
+```review
 @<kw>{Credential, credential}:: keyword.
 @<bou>{appropriate}:: bou-ten.
 @<ami>{point}:: ami-kake (shaded text)
@@ -1072,7 +1092,7 @@ Output:
 
 ### References
 
-```
+```review
 @<chap>{advanced}:: chapter number like `Chapter 17`
 @<title>{advanced}:: title of the chapter
 @<chapref>{advanced}:: a chapter number and chapter title like `Chapter 17. advanced topic`
@@ -1086,7 +1106,7 @@ Output:
 
 ### Other inline commands
 
-```
+```review
 @<ruby>{Matsumoto, Matz}:: ruby markups
 @<br>{}::  linebreak in paragraph
 @<uchar>{2460}:: Unicode code point
@@ -1108,7 +1128,7 @@ These commands are used in the output document. In contrast,
 commands as below are not used in the output document, used
 by the author.
 
-```
+```review
 #@#:: Comments. All texts in this line are ignored.
 #@warn(...):: Warning messages. The messages are showed when pre-process.
 #@require, #@provide:: Define dependency with keywords.
@@ -1160,7 +1180,7 @@ In `locale.yml`, you can use these Re:VIEW custom format.
 
 Usage:
 
-```
+```yaml
 locale: en
   part: Part. %pRW
   appendix: Appendix. %pA
@@ -1186,7 +1206,7 @@ end
 
 You can add the syntax as below:
 
-```
+```review
 //foo{
 A
 B
@@ -1194,7 +1214,7 @@ C
 //}
 ```
 
-```
+```text
 # Result
 A,B,C
 ```

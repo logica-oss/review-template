@@ -27,3 +27,6 @@ devcontainer-lock.json
 .agents/skills/slopless
 .agents/skills/stop-slop/
 .agents/skills/yomiyasu/
+.claude/skills/slopless
+.claude/skills/stop-slop/
+.claude/skills/yomiyasu/

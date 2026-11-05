@@ -19,7 +19,6 @@ const loadBookConfig = async (): Promise<BookConfig> => {
   }
 
   const contentdir: unknown = parsed.contentdir;
-
   return {
     contentdir: typeof contentdir === "string" ? contentdir : undefined,
   };

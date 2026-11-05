@@ -1,0 +1,41 @@
+name: Build (PDF)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: build-pdf-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  build:
+    name: Build (PDF)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: vvakame/review:5.9@sha256:7a794388ffb69ba575e60449cc7a818cda8e28f1addbe90ea361e9d0dad8a3ec
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - name: Wait for autofix
+        uses: logica-oss/actions-toolkit/wait-for-workflow@a9b5747568c5c53f2011d686212afcd21802621d # v1.2.4
+        with:
+          workflow-id: autofix.yaml
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Bun environment
+        uses: logica-oss/actions-toolkit/setup-bun@a9b5747568c5c53f2011d686212afcd21802621d # v1.2.4
+      - name: Build PDF
+        run: bun run pdf
+      - name: Upload distribution artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: Output documents
+          path: ./dist/

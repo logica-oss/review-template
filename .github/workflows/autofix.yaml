@@ -1,0 +1,33 @@
+name: Autofix
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: autofix-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  autofix:
+    name: Autofix
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Bun environment
+        uses: logica-oss/actions-toolkit/setup-bun@a9b5747568c5c53f2011d686212afcd21802621d # v1.2.4
+      - name: Lint
+        run: bun run lint
+      - name: Format
+        run: bun run format
+      - name: Autofix text files
+        uses: logica-oss/actions-toolkit/autofix-text@a9b5747568c5c53f2011d686212afcd21802621d # v1.2.4

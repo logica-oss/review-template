@@ -2,6 +2,8 @@
 
 Re:VIEW用の書籍テンプレート
 
+[TechBooster/ReVIEW-Template](https://github.com/TechBooster/ReVIEW-Template)をベースに、大幅に独自のカスタマイズを加えてあります。
+
 ## 必要な環境
 
 - Bun
@@ -29,13 +31,13 @@ bun run text
 
 ## 開発用プレビュー
 
-`articles/` の変更を監視して `web` を再ビルドし、Vite で配信します。
+`articles/`の変更を監視して`web`を再ビルドし、Viteで配信します。
 
 ```sh
 bun run dev
 ```
 
-`http://localhost:8000` で確認できます。ポート変更は `PORT=3000 bun run dev` です。
+`http://localhost:8000`で確認できます。ポート変更は`PORT=3000 bun run dev`です。
 
 ### 設定
 
@@ -52,7 +54,7 @@ bun run lint
 ```
 
 文章の執筆・推敲には、Skillsも利用できます。  
-依存関係をインストールした後に次を実行すると、外部配布のskillsを`.agents/skills/`に同期できます。
+依存関係をインストールした後に次を実行すると、外部配布のSkillsを`.agents/skills/`に同期できます。
 
 ```sh
 bun run skills:sync
@@ -107,12 +109,12 @@ REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
   - 印刷用に、トンボ、デジタルトンボを設置
   - いくつかの同人誌印刷所で要求事項となっているノドへの隠しノンブル、大扉からのアラビア数字通し
   - ハイパーリンクは無効化
-  - 表紙（cover）は無視
+  - 表紙 (cover) は無視
 - 電子版
   - 電子配布用に、仕上がり紙面サイズ
   - 大扉からのアラビア数字通し
   - ハイパーリンク有効
-  - 表紙（cover）は中央合わせで配置
+  - 表紙 (cover) は中央合わせで配置
 
 ## 権利
 

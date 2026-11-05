@@ -33,26 +33,26 @@ Conversion from config.yml to TeX macro is executed in `templates/latex/config.e
 
 In the new `layout.tex.erb`, content is constructed by defining or changing the following macros.
 
-* `\reviewbegindocumenthook` : hook begining the document
-* `\reviewcoverpagecont` : cover contents
-* `\reviewfrontmatterhook` : hook before frontmatter
-* `\reviewtitlepagecont` : titlepage contents
-* `\revieworiginaltitlepagecont` : original titlepage contents (in the case of a translation)
-* `\reviewcreditfilecont` : credit contents
-* `\reviewprefacefiles` : frontmatter contents (PREDEF)
-* `\reviewtableofcontents` : table of contents
-* `\reviewmainmatterhook` : hook before mainmatter
-* `\reviewchapterfiles` : mainmatter contents (CHAPS)
-* `\reviewappendixhook` : hook before appendix
-* `\reviewappendixfiles` : appendix contents (APPENDIX)
-* `\reviewbackmatterhook` : hook before backmatter
-* `\reviewpostdeffiles` : backmatter contents (POSTDEF)
-* `\reviewprintindex` : index
-* `\reviewprofilepagecont` : profile contents
-* `\reviewadvfilepagecont` : advertisement contents
-* `\reviewcolophonpagecont` : colophon contents
-* `\reviewbackcovercont` : backcover contents
-* `\reviewenddocumenthook` : hook before ending the document
+- `\reviewbegindocumenthook` : hook begining the document
+- `\reviewcoverpagecont` : cover contents
+- `\reviewfrontmatterhook` : hook before frontmatter
+- `\reviewtitlepagecont` : titlepage contents
+- `\revieworiginaltitlepagecont` : original titlepage contents (in the case of a translation)
+- `\reviewcreditfilecont` : credit contents
+- `\reviewprefacefiles` : frontmatter contents (PREDEF)
+- `\reviewtableofcontents` : table of contents
+- `\reviewmainmatterhook` : hook before mainmatter
+- `\reviewchapterfiles` : mainmatter contents (CHAPS)
+- `\reviewappendixhook` : hook before appendix
+- `\reviewappendixfiles` : appendix contents (APPENDIX)
+- `\reviewbackmatterhook` : hook before backmatter
+- `\reviewpostdeffiles` : backmatter contents (POSTDEF)
+- `\reviewprintindex` : index
+- `\reviewprofilepagecont` : profile contents
+- `\reviewadvfilepagecont` : advertisement contents
+- `\reviewcolophonpagecont` : colophon contents
+- `\reviewbackcovercont` : backcover contents
+- `\reviewenddocumenthook` : hook before ending the document
 
 It is also possible to continue using your `layouts/layout.tex.erb`.
 
@@ -60,15 +60,15 @@ It is also possible to continue using your `layouts/layout.tex.erb`.
 
 When creating a new document folder with the `review-init` command, the following files are created in `sty` folder.
 
-* `review-jsbook.cls` : provides a basic design of paper representation.
-* `jsbook.cls` : is a copy of the upstream jsbook. To avoid differences in version on TeX distribution, Re:VIEW provides a snapshot of `jsbook.cls`.
-* `plistings.sty` : provides highlight expressions of program code.
-* `jumoline.sty` : expresses underlining.
-* `gentombow.sty` : makes bleed box.
-* `reviewmacro.sty` : imports the following style file. By specifying this file with `texstyle` parameter of config.yml, all style files are imported.
-* `review-base.sty` : associates Re:VIEW macro name and TeX macro. Also defines the entity of each macros of `layout.tex.erb`.
-* `review-style.sty` :defines visual decorations.
-* `review-custom.sty` : is empty file. It is assumed that the user adds macros or overwrites existing macros arbitrarily.
+- `review-jsbook.cls` : provides a basic design of paper representation.
+- `jsbook.cls` : is a copy of the upstream jsbook. To avoid differences in version on TeX distribution, Re:VIEW provides a snapshot of `jsbook.cls`.
+- `plistings.sty` : provides highlight expressions of program code.
+- `jumoline.sty` : expresses underlining.
+- `gentombow.sty` : makes bleed box.
+- `reviewmacro.sty` : imports the following style file. By specifying this file with `texstyle` parameter of config.yml, all style files are imported.
+- `review-base.sty` : associates Re:VIEW macro name and TeX macro. Also defines the entity of each macros of `layout.tex.erb`.
+- `review-style.sty` :defines visual decorations.
+- `review-custom.sty` : is empty file. It is assumed that the user adds macros or overwrites existing macros arbitrarily.
 
 Default value of texdocumentclass are as follows.
 
@@ -127,13 +127,13 @@ Refer to these macros in your sty file.
 
 ## Important Changes about LaTeX in Re:VIEW 2.0
 
-* Default LaTeX compiler is upLaTeX, not pLaTeX.
-* The meaning of `scale` option in `@<image>` command is changed and configurable.
-* `prt` is printer, not publisher. You can use `pbl` for publisher.
+- Default LaTeX compiler is upLaTeX, not pLaTeX.
+- The meaning of `scale` option in `@<image>` command is changed and configurable.
+- `prt` is printer, not publisher. You can use `pbl` for publisher.
 
 ## about upLaTeX
 
-In Re:VIEW 2.0 released at April 2016, default LaTeX compiler became upLaTeX from pLaTeX.  The upLaTeX support Unicode and you can use unicode characters and other characters without otf package.
+In Re:VIEW 2.0 released at April 2016, default LaTeX compiler became upLaTeX from pLaTeX. The upLaTeX support Unicode and you can use unicode characters and other characters without otf package.
 
 Almost packages in pLaTeX can be supported in upLaTeX, but some package (such as jsbook class and otf package) need `uplatex` option.
 
@@ -175,10 +175,10 @@ The usage is below:
 
 ## about `scale` option
 
-In Re:VIEW 2.0, the meaning of `scale=..` in the third option of ``//image`` command.
+In Re:VIEW 2.0, the meaning of `scale=..` in the third option of `//image` command.
 The meaning in 1.0 is "scale for image file" (`1.0` is same as original image size), but the one in 2.0 is "scale for paper width" (`1.0` is same as paper widdth.)
 
-If you need the same behavior in Re:VIEW 1.x, you should add ``image_scale2width: false`` in config.yml (default value is `true`).
+If you need the same behavior in Re:VIEW 1.x, you should add `image_scale2width: false` in config.yml (default value is `true`).
 
 ```yaml
 image_scale2width: false

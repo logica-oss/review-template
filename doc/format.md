@@ -56,7 +56,7 @@ Usage:
 ===[column] Compiler-compiler
 ```
 
-`=` and `[column]` should be closed to.  Any spaces are not permitted.
+`=` and `[column]` should be closed to. Any spaces are not permitted.
 
 Columns are closed with next headings.
 
@@ -84,9 +84,9 @@ blah, blah, blah (this is paragraphs outside of the column)
 
 There are some more options of headings.
 
-* `[nonum]` : no numbering, but add it into TOC (Table of Contents).
-* `[nodisp]` : not display in document, only in TOC.
-* `[notoc]` :  no numbering, not in TOC.
+- `[nonum]` : no numbering, but add it into TOC (Table of Contents).
+- `[nodisp]` : not display in document, only in TOC.
+- `[notoc]` : no numbering, not in TOC.
 
 ## Itemize
 
@@ -111,7 +111,7 @@ You should add emply lines between Paragraphs and Itemize (same as Ordered and N
 
 ## Ordered Itemize
 
-Ordered itemize (ol in HTML)  uses ` 1. ...`, ` 2. ...`, ` 3. ...`.
+Ordered itemize (ol in HTML) uses ` 1. ...`, ` 2. ...`, ` 3. ...`.
 They aren't nested.
 
 Usage:
@@ -134,7 +134,7 @@ You must write one more space character at line head like itemize.
 
 ## Definition List
 
-Definition list (dl in HTML) uses ` : ` and indented lines.
+Definition list (dl in HTML) uses `:` and indented lines.
 
 Usage:
 
@@ -171,7 +171,7 @@ The syntax of block commands is below:
 //}
 ```
 
-If there is no options, the begining line is just `//command{`.  When you want to use a character `]`, you must use escaping `\]`.
+If there is no options, the begining line is just `//command{`. When you want to use a character `]`, you must use escaping `\]`.
 
 Some block commands has no content.
 
@@ -179,7 +179,7 @@ Some block commands has no content.
 //command[option1][option2]...
 ```
 
-Inline commands are used in block,  paragraphes, headings, block contents and block options.
+Inline commands are used in block, paragraphes, headings, block contents and block options.
 
 ```
 @<command>{content}
@@ -189,11 +189,12 @@ When you want to use a character `}` in inline content, you must use escaping `\
 
 There are some limitations in blocks and inlines.
 
-* Block commands do not support nestins.  You cannot write blocks in another block.
-* You cannot write headings and itemize in block contents.
-* Inline commands also do not support nestins.  You cannot write inlines in another inline.
+- Block commands do not support nestins. You cannot write blocks in another block.
+- You cannot write headings and itemize in block contents.
+- Inline commands also do not support nestins. You cannot write inlines in another inline.
 
 ### Fence notation for inline commands
+
 You may be tired of escaping when you use a large number of inline commands including `{` and `\`. By surrounding the contents with `$ $` or `| |` instead of `{ }`, you can write without escaping.
 
 ```
@@ -213,16 +214,16 @@ Since this notation is substitute, please avoid abuse.
 
 ## Code List
 
-Code list like source codes is `//list`. If you don't need numbers, you can use ``em`` prefix (as embedded). If you need line numbers, you can use ``num`` postfix.  So you can use four types of lists.
+Code list like source codes is `//list`. If you don't need numbers, you can use `em` prefix (as embedded). If you need line numbers, you can use `num` postfix. So you can use four types of lists.
 
-* ``//list[ID][caption][language]{ ... //}``
-  * normal list. language is optional.
-* ``//listnum[ID][caption][language]{ ... //}``
-  * normal list with line numbers. language is optional.
-* ``//emlist[caption][language]{ ... //}``
-  * list without caption counters. caption and language are optional.
-* ``//emlistnum[caption][language]{ ... //}``
-  * list with line numbers without caption counters. caption and language are optional.
+- `//list[ID][caption][language]{ ... //}`
+  - normal list. language is optional.
+- `//listnum[ID][caption][language]{ ... //}`
+  - normal list with line numbers. language is optional.
+- `//emlist[caption][language]{ ... //}`
+  - list without caption counters. caption and language are optional.
+- `//emlistnum[caption][language]{ ... //}`
+  - list with line numbers without caption counters. caption and language are optional.
 
 Usage:
 
@@ -351,7 +352,7 @@ V1 --> V6 --|
 //}
 ```
 
-The third option is used to define the scale of images.  `scale=X` is scaling for page width (`scale=0.5` makes image width to be half of page width).
+The third option is used to define the scale of images. `scale=X` is scaling for page width (`scale=0.5` makes image width to be half of page width).
 If you'd like to use different values for each builders, such as HTML and TeX, you can specify the target builders using `::`. Example: `html::style="transform: scale(0.5);",latex::scale=0.5`
 
 When you want to refer images such as "see figure 1.", you can use
@@ -363,7 +364,7 @@ When you want to use images in paragraph or other inline context, you can use `@
 
 ### Finding image pathes
 
-The order of finding image is as follows.  The first matched one is used.
+The order of finding image is as follows. The first matched one is used.
 
 ```
 1. <imgdir>/<builder>/<chapid>/<id>.<ext>
@@ -374,21 +375,21 @@ The order of finding image is as follows.  The first matched one is used.
 6. <imgdir>/<id>.<ext>
 ```
 
-* ``<imgdir>`` is `images` as default.
-* ``<builder>`` is a builder (target) name to use.  When you use review-comile commmand with ``--target=html``, `<imagedir>/<builder>` is `images/html`. The builder name for epubmaker and webmaker is `html`, for pdfmaker it is `latex`, and for textmaker it is `top`.
-* ``<chapid>`` is basename of *.re file.  If the filename is `ch01.re`, chapid is `ch01`.
-* ``<id>`` is the ID of the first argument of `//image`.  You should use only printable ASCII characters as ID.
-* ``<ext>`` is file extensions of Re:VIEW.  They are different by the builder you use.
+- `<imgdir>` is `images` as default.
+- `<builder>` is a builder (target) name to use. When you use review-comile commmand with `--target=html`, `<imagedir>/<builder>` is `images/html`. The builder name for epubmaker and webmaker is `html`, for pdfmaker it is `latex`, and for textmaker it is `top`.
+- `<chapid>` is basename of *.re file. If the filename is `ch01.re`, chapid is `ch01`.
+- `<id>` is the ID of the first argument of `//image`. You should use only printable ASCII characters as ID.
+- `<ext>` is file extensions of Re:VIEW. They are different by the builder you use.
 
 For each builder, image files are searched in order of the following extensions, and the first hit file is adopted.
 
-* HTMLBuilder (EPUBMaker, WEBMaker), MARKDOWNBuilder: .png, .jpg, .jpeg, .gif, .svg
-* LATEXBuilder (PDFMaker): .ai, .eps, .pdf, .tif, .tiff, .png, .bmp, .jpg, .jpeg, .gif
-* Other builders/makers: .ai, .psd, .eps, .pdf, .tif, .tiff, .png, .bmp, .jpg, .jpeg, .gif, .svg
+- HTMLBuilder (EPUBMaker, WEBMaker), MARKDOWNBuilder: .png, .jpg, .jpeg, .gif, .svg
+- LATEXBuilder (PDFMaker): .ai, .eps, .pdf, .tif, .tiff, .png, .bmp, .jpg, .jpeg, .gif
+- Other builders/makers: .ai, .psd, .eps, .pdf, .tif, .tiff, .png, .bmp, .jpg, .jpeg, .gif, .svg
 
 ### Inline Images
 
-When you want to use images in paragraph, you can use the inline command `@<icon>{ID}`.  The order of finding images are same as `//image`.
+When you want to use images in paragraph, you can use the inline command `@<icon>{ID}`. The order of finding images are same as `//image`.
 
 ## Images without caption counter
 
@@ -402,7 +403,6 @@ Usage:
 ```
 
 Note that there are similar markup `//numberlessimage`, but it is deprecated.
-
 
 ## Figures with graph tools
 
@@ -419,18 +419,18 @@ plot sin(x)
 You can use `graphviz`, `gnuplot`, `blockdiag`, `aafigure`, and `plantuml` as the command name.
 Before using these tools, you should installed them and configured path appropriately.
 
-* Graphviz ( https://www.graphviz.org/ ) : set path to `dot` command
-* Gnuplot ( http://www.gnuplot.info/ ) : set path to `gnuplot` command
-* Blockdiag ( http://blockdiag.com/ ) : set path to `blockdiag` command. Install ReportLab also to make a PDF
-* aafigure ( https://launchpad.net/aafigure ) : set path to `aafigure` command
-* PlantUML ( http://plantuml.com/ ) : set path to `java` command. place `plantuml.jar` on working folder
+- Graphviz ( https://www.graphviz.org/ ) : set path to `dot` command
+- Gnuplot ( http://www.gnuplot.info/ ) : set path to `gnuplot` command
+- Blockdiag ( http://blockdiag.com/ ) : set path to `blockdiag` command. Install ReportLab also to make a PDF
+- aafigure ( https://launchpad.net/aafigure ) : set path to `aafigure` command
+- PlantUML ( http://plantuml.com/ ) : set path to `java` command. place `plantuml.jar` on working folder
 
 ## Tables
 
 The markup of table is `//table[ID][caption]{ ... //}`
 You can separate header and content with `------------`.
 
-The columns are splitted by TAB character. Write `.` to blank cells.  When the first character in the cell is `.`, the character is removed.  If you want to write `.` at the first, you should write `..`.
+The columns are splitted by TAB character. Write `.` to blank cells. When the first character in the cell is `.`, the character is removed. If you want to write `.` at the first, you should write `..`.
 
 When you want to use an empty column, you write `.`.
 
@@ -473,21 +473,22 @@ To create a table without numbering but with captioning, use `//emtable`.
 ```
 
 ### Column width of table
+
 When using LaTeX or IDGXML builder, you can specify each column width of the table with `//tsize` block command.
 
 ```
 //tsize[|builder|width-of-column1,width-of-column2,...]
 ```
 
-* The collumn width is specified in mm.
-* For IDGXML, if only 1st of the three columns is specified, the remaining 2nd and 3rd columns will be the width of the remainder of the live area width equally divided. It is not possible to specify that only the 1st and 3rd columns are specified.
-* For LaTeX, you have to specify all column widths.
-* For LaTeX, you can also directly specify the column parameter of LaTeX table macro like `//tsize[|latex||p{20mm}cr|]`.
-* In other builders such as HTML, this command is simply ignored.
+- The collumn width is specified in mm.
+- For IDGXML, if only 1st of the three columns is specified, the remaining 2nd and 3rd columns will be the width of the remainder of the live area width equally divided. It is not possible to specify that only the 1st and 3rd columns are specified.
+- For LaTeX, you have to specify all column widths.
+- For LaTeX, you can also directly specify the column parameter of LaTeX table macro like `//tsize[|latex||p{20mm}cr|]`.
+- In other builders such as HTML, this command is simply ignored.
 
 ### Complex Table
 
-If you want to use complex tables, you can use `imgtable` block command with an image of the table.  `imgtable` supports numbering and `@<table>`.
+If you want to use complex tables, you can use `imgtable` block command with an image of the table. `imgtable` supports numbering and `@<table>`.
 
 Usage:
 
@@ -516,14 +517,14 @@ You can use inline markup in quotations.
 
 Some block commands are used for short column.
 
-* `//note[caption]{ ... //}`
-* `//memo[caption]{ ... //}`
-* `//tip[caption]{ ... //}`
-* `//info[caption]{ ... //}`
-* `//warning[caption]{ ... //}`
-* `//important[caption]{ ... //}`
-* `//caution[caption]{ ... //}`
-* `//notice[caption]{ ... //}`
+- `//note[caption]{ ... //}`
+- `//memo[caption]{ ... //}`
+- `//tip[caption]{ ... //}`
+- `//info[caption]{ ... //}`
+- `//warning[caption]{ ... //}`
+- `//important[caption]{ ... //}`
+- `//caution[caption]{ ... //}`
+- `//notice[caption]{ ... //}`
 
 `[caption]` is optional.
 
@@ -560,6 +561,7 @@ is in footnotes.
 Note that in LATEXBuilder, it is highly recommended to place `//footnote` after the end line of column (`==[/column]`) to avoid problems when using third party's style file.
 
 ### `footnotetext` option
+
 Note that in LATEXBuilder, you should use `footnotetext` option to use `@<fn>{...}` in `//note` or other short column blocks.
 
 By adding `footnotetext:true` in config.yml, you can use footnote in tables and short notes.
@@ -648,6 +650,7 @@ Whether LaTeX formula is correctly displayed or not depends on the processing sy
 In EPUBMaker and WEBMaker, you can choose between MathML conversion, MathJax conversion, and imaging.
 
 ### MathML case
+
 Install MathML library (`gem install math_ml`).
 
 Specify in config.yml as follows:
@@ -659,6 +662,7 @@ math_format: mathml
 Whether it is displayed properly in MathML depends on your viewer or browser.
 
 ### MathJax case
+
 Specify in config.yml as follows:
 
 ```
@@ -675,7 +679,7 @@ You need TeXLive or other LaTeX environment. Modify the parameters of `texcomman
 
 In addition, external tools for image conversion are also needed. Currently, it supports the following two methods.
 
-- `pdfcrop`: cut out  the formula using `pdfcrop` command (included in TeXLive) and image it. By default, `pdftocairo` command is used (included in Poppler library). You can change it to another tool if available on the command line.
+- `pdfcrop`: cut out the formula using `pdfcrop` command (included in TeXLive) and image it. By default, `pdftocairo` command is used (included in Poppler library). You can change it to another tool if available on the command line.
 - `dvipng`: it uses [dvipng](https://ctan.org/pkg/dvipng) to cut out and to image. You can install with OS package or `tlmgr install dvipng`.
 
 By setting in config.yml,
@@ -763,7 +767,7 @@ imgmath_options:
 
 `//noindent` is a tag for spacing.
 
-* `//noindent` : ingore indentation immediately following line. (in HTML, add `noindent` class)
+- `//noindent` : ingore indentation immediately following line. (in HTML, add `noindent` class)
 
 ## Blank line
 
@@ -784,11 +788,11 @@ Insert two blank line below.
 
 ## Referring headings
 
-There are 3 inline commands to refer a chapter.  These references use Chapter ID. The Chapter ID is filename of chapter without extentions.  For example, Chapter ID of `advanced.re` is `advance`.
+There are 3 inline commands to refer a chapter. These references use Chapter ID. The Chapter ID is filename of chapter without extentions. For example, Chapter ID of `advanced.re` is `advance`.
 
-* `@<chap>{ChapterID}` : chapter number (ex. `Chapter 17`).
-* `@<title>{ChapterID}` : chapter title
-* `@<chapref>{ChapterID}` : chapter number and chapter title (ex. `Chapter 17. other topics`).
+- `@<chap>{ChapterID}` : chapter number (ex. `Chapter 17`).
+- `@<title>{ChapterID}` : chapter title
+- `@<chapref>{ChapterID}` : chapter number and chapter title (ex. `Chapter 17. other topics`).
 
 `@<hd>` generate referred section title and section number.
 You can use deeper section with separator `|`.
@@ -822,7 +826,6 @@ When section has the label, you can use the label.
 :
 @<hd>{intro|first section}
 ```
-
 
 ### Heading of columns
 
@@ -1102,7 +1105,7 @@ Output:
 ## Commands for Authors (pre-processor commands)
 
 These commands are used in the output document. In contrast,
-commands as below are not used in the output document,  used
+commands as below are not used in the output document, used
 by the author.
 
 ```
@@ -1144,16 +1147,16 @@ table: Tbl.
 
 In `locale.yml`, you can use these Re:VIEW custom format.
 
-* `%pA` : Alphabet (A, B, C, ...)
-* `%pa` : alphabet (a, b, c, ...)
-* `%pAW` : Alphabet (Large Width) Ａ, Ｂ, Ｃ, ...
-* `%paW` : alphabet (Large Width) ａ, ｂ, ｃ, ...
-* `%pR` : Roman Number (I, II, III, ...)
-* `%pr` : roman number (i, ii, iii, ...)
-* `%pRW` : Roman Number (Large Width) Ⅰ, Ⅱ, Ⅲ, ...
-* `%pJ` : Chainese Number 一, 二, 三, ...
-* `%pdW' : Arabic Number (Large Width for 0..9) １, ２, ...,９, 10, ...
-* `%pDW' : Arabic Number (Large Width) １, ２, ... １０, ...
+- `%pA` : Alphabet (A, B, C, ...)
+- `%pa` : alphabet (a, b, c, ...)
+- `%pAW` : Alphabet (Large Width) Ａ, Ｂ, Ｃ, ...
+- `%paW` : alphabet (Large Width) ａ, ｂ, ｃ, ...
+- `%pR` : Roman Number (I, II, III, ...)
+- `%pr` : roman number (i, ii, iii, ...)
+- `%pRW` : Roman Number (Large Width) Ⅰ, Ⅱ, Ⅲ, ...
+- `%pJ` : Chainese Number 一, 二, 三, ...
+- `%pdW' : Arabic Number (Large Width for 0..9) １, ２, ...,９, 10, ...
+- `%pDW' : Arabic Number (Large Width) １, ２, ... １０, ...
 
 Usage:
 
@@ -1210,7 +1213,7 @@ Sample layout file(layout.html.erb):
   </head>
   <body>
     <%= @body %>
-    <hr/>
+    <hr />
   </body>
 </html>
 ```

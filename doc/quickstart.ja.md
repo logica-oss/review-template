@@ -61,6 +61,7 @@ $ git pull
 ## Re:VIEW プロジェクトの作成
 
 ### 雛型の作成
+
 review-init コマンドを使って、雛型となるプロジェクトフォルダを作成できます。
 
 ```
@@ -77,16 +78,16 @@ $ review-init -w プロジェクト名
 
 これで指定のプロジェクト名のフォルダが用意され、中に次のようなファイルが置かれます。
 
- * プロジェクト名を冠した「.re」拡張子を持つファイル（Re:VIEW フォーマットテキストファイル）
- * config.yml : 設定ファイル
- * config-ebook.yml : 電子ブック用設定ファイル（ウィザードモード使用時）
- * catalog.yml : カタログファイル（目次構成）
- * Rakefile : rake コマンドのルールファイル
- * images : 画像の配置フォルダ
- * style.css : サンプルスタイルシート
- * sty : スタイルファイル配置フォルダ（TeX 用）
- * doc : 本ドキュメントを含む使い方のドキュメント
- * lib : 主に rake コマンドの詳細ルールファイル
+- プロジェクト名を冠した「.re」拡張子を持つファイル（Re:VIEW フォーマットテキストファイル）
+- config.yml : 設定ファイル
+- config-ebook.yml : 電子ブック用設定ファイル（ウィザードモード使用時）
+- catalog.yml : カタログファイル（目次構成）
+- Rakefile : rake コマンドのルールファイル
+- images : 画像の配置フォルダ
+- style.css : サンプルスタイルシート
+- sty : スタイルファイル配置フォルダ（TeX 用）
+- doc : 本ドキュメントを含む使い方のドキュメント
+- lib : 主に rake コマンドの詳細ルールファイル
 
 review-init コマンドによらず、独自にプロジェクトフォルダを作成してもかまいません。
 
@@ -158,7 +159,7 @@ $ rake idgxml ←InDesign XMLの作成
 
 config.yml のサンプルについては以下を参照してください。
 
-* [config.yml.sample](https://github.com/kmuto/review/blob/master/doc/config.yml.sample)
+- [config.yml.sample](https://github.com/kmuto/review/blob/master/doc/config.yml.sample)
 
 #### Vivliostyle CLI を使った PDF 化
 
@@ -171,6 +172,7 @@ $ rake vivliostyle          ← vivliostyle:buildのショートカット
 ```
 
 ### 章を増やす、カスタマイズする
+
 作成した PDF あるいは EPUB を見ると、先に作成した RE:VIEW フォーマットテキストファイルが「第1章」となっていることがわかります。
 
 章を増やすには、同様に .re 拡張子の Re:VIEW フォーマットテキストファイルを用意し、catalog.yml にそれを登録します。
@@ -191,11 +193,13 @@ POSTDEF:
 catalog.yml の PREDEF は前付、CHAPS は章、APPENDIX は付録、POSTDEF は後付です。詳細は [catalog.ja.md](https://github.com/kmuto/review/blob/master/doc/catalog.ja.md) を参照してください。
 
 ### 情報
+
 Re:VIEW フォーマットについての詳細は、 [format.ja.md](https://github.com/kmuto/review/blob/master/doc/format.ja.md) を参照してください。
 
 Re:VIEW の使用実例については、https://github.com/reviewml/review-samples にもまとめています。
 
 ## ファイル単位の変換
+
 通常の用途では review-pdfmaker や review-epubmaker で事足りるはずですが、それ以外の形式に変換したり、PDF や EPUB の変換にあたってどのような変換が行われているのかを確認したりしたいときには、review-compile コマンドを使用します。
 
 たとえば sample.re ファイルを変換するには次のようになります。
@@ -263,7 +267,7 @@ Re:VIEW は、青木峰郎によって最初に作成されました。武藤健
 
 バグ・パッチの報告、その他の情報は、
 
-* http://reviewml.org/
-* https://github.com/kmuto/review/wiki
+- http://reviewml.org/
+- https://github.com/kmuto/review/wiki
 
 を参照してください。

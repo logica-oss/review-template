@@ -33,13 +33,14 @@ POSTDEF:
 CHAPS:
   - ch01.re
   - 第1部:
-    - ch02.re
-    - ch03.re
+      - ch02.re
+      - ch03.re
   - pt02.re:
-    - ch04.re
+      - ch04.re
 ```
 
 ## 古いバージョンについて
+
 1.2 以前の Re:VIEW ではカタログファイルとして PREDEF, CHAPS, POSTDEF, PART という独立した4つのファイルを使用していました。古いカタログファイルを変換するツールとして、`review-catalog-converter` を提供しています。
 
 このコマンドにドキュメントのパスを指定して実行後、生成された catalog.yml の内容が正しいか確認してください。

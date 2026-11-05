@@ -12,29 +12,29 @@ Now we use catalog.yml as catalog file.
 In catalog.yml, you can write `PREDEF`(frontmatter), `CHAPS`(bodymatter), `APPENDIX`(appendix) and `POSTDEF`(backmater). `CHAPS` is required.
 
 ```yaml
-  PREDEF:
-    - intro.re
-  
-  CHAPS:
-    - ch01.re
-    - ch02.re
-  
-  APPENDIX:
-    - appendix.re
-  
-  POSTDEF:
-    - postscript.re
+PREDEF:
+  - intro.re
+
+CHAPS:
+  - ch01.re
+  - ch02.re
+
+APPENDIX:
+  - appendix.re
+
+POSTDEF:
+  - postscript.re
 ```
 
 You can add parts in body to use `CHAPS` in a hierarchy. You can use both title name and file name to specify parts.
 
 ```yaml
-  CHAPS:
-    - ch01.re
-    - TITLE_OF_PART1:
+CHAPS:
+  - ch01.re
+  - TITLE_OF_PART1:
       - ch02.re
       - ch03.re
-    - pt02.re:
+  - pt02.re:
       - ch04.re
 ```
 

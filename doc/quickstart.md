@@ -2,7 +2,7 @@
 
 Re:VIEW is a toolset to convert from Re:VIEW format documents into various formats.
 
-Re:VIEW uses original lightweight markup language like EWB, RD or Wiki.  Its syntax is simple but powerful for writing IT documents.
+Re:VIEW uses original lightweight markup language like EWB, RD or Wiki. Its syntax is simple but powerful for writing IT documents.
 When you write your documents in Re:VIEW format, you can convert them with Re:VIEW tools into LaTeX, HTML, EPUB, InDesign, Text, and so on.
 
 Re:VIEW is free software under the terms of the GNU Lesser General Public License Version 2.1, so you can use, modify and redistribute it. This license has no relations with your documents using Re:VIEW, so your documents are not forced to use this license. When you want to distribute Re:VIEW software itself or the system including Re:VIEW software, you should read COPYING file carefully.
@@ -21,7 +21,7 @@ Note that Re:VIEW format is plain texts with simple markups in UTF-8, so you can
 
 Re:VIEW is released as RubyGems.
 
-* https://rubygems.org/gems/review
+- https://rubygems.org/gems/review
 
 Add this line to your application's Gemfile:
 
@@ -83,16 +83,16 @@ $ review-init -w hello
 
 In `hello` directory, many files are generated.
 
-* `*.re` : Re:VIEW format file.
-* config.yml : configuration file
-* config-ebook.yml : configuration file for ebook (when using the wizard mode)
-* catalog.yml : catalog file (for TOC)
-* Rakefile : rule file for `rake` command
-* images : folder for images
-* style.css : sample stylesheet
-* sty : style files for LaTeX
-* doc : various documents (including this document)
-* lib : detailed rule files of rake command and etc.
+- `*.re` : Re:VIEW format file.
+- config.yml : configuration file
+- config-ebook.yml : configuration file for ebook (when using the wizard mode)
+- catalog.yml : catalog file (for TOC)
+- Rakefile : rule file for `rake` command
+- images : folder for images
+- style.css : sample stylesheet
+- sty : style files for LaTeX
+- doc : various documents (including this document)
+- lib : detailed rule files of rake command and etc.
 
 ### writing Re:VIEW documents and converting them
 
@@ -190,7 +190,7 @@ APPENDIX:
 POSTDEF:
 ```
 
-The first item in CHAPS is the first chapter, and the second item (if you add) is the second chapter. PREDEF is for front matter, APPENDIX is for appendix, and POSTDEF is for back matter.  You can see in detail with [catalog.md](https://github.com/kmuto/review/blob/master/doc/catalog.ja.md).
+The first item in CHAPS is the first chapter, and the second item (if you add) is the second chapter. PREDEF is for front matter, APPENDIX is for appendix, and POSTDEF is for back matter. You can see in detail with [catalog.md](https://github.com/kmuto/review/blob/master/doc/catalog.ja.md).
 
 ### more information
 
@@ -210,7 +210,7 @@ $ review-compile --target idgxml sample.re > sample.xml  ## for XML
 $ review-compile --target markdown sample.re > sample.md ## for Markdown
 ```
 
-`review-compile` and other commands in Re:VIEW has `--help` option to output help.  `review-compile` has many options, so you may see them.
+`review-compile` and other commands in Re:VIEW has `--help` option to output help. `review-compile` has many options, so you may see them.
 
 ## preprocessor and other commands
 
@@ -265,5 +265,5 @@ The original author of Re:VIEW is Minero Aoki. The current maintainer is Kenshi 
 
 If you want to report bugs and patches, or to get more information, see:
 
-* http://reviewml.org/
-* https://github.com/kmuto/review/wiki
+- http://reviewml.org/
+- https://github.com/kmuto/review/wiki

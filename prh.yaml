@@ -1,9 +1,7 @@
 # https://gist.github.com/inao/f55e8232e150aee918b9
 # from WEB+DB PRESS
-# 対応は不完全(途中で飽きた) 一部手心を加えている
 version: 1
 
 imports:
-  # 気合で移行した気持ちになった
   - ./prh-rules/media/techbooster.yaml
   - ./prh-rules/media/WEB+DB_PRESS.yaml

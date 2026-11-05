@@ -50,6 +50,13 @@ bun run dev
 bun run lint
 ```
 
+文章の執筆・推敲には、Skillsも利用できます。  
+依存関係をインストールした後に次を実行すると、外部配布のskillsを`.agents/skills/`に同期できます。
+
+```sh
+bun run skills:sync
+```
+
 ## Dockerを使う
 
 セットアップ済みのDockerイメージを使ったビルドも可能です。
@@ -104,7 +111,7 @@ REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
   - 電子配布用に、仕上がり紙面サイズ
   - 大扉からのアラビア数字通し
   - ハイパーリンク有効
-  - 表紙（cover）を中央合わせで配置
+  - 表紙（cover）は中央合わせで配置
 
 ## 権利
 

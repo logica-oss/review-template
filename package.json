@@ -2,11 +2,14 @@
   "name": "review-template",
   "version": "0.1.0",
   "private": true,
-  "description": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/logica-oss/review-template.git"
+  },
   "scripts": {
     "prepare": "gem install bundler -N && bundle install",
-    "lint": "bun -b oxlint --fix && bun -b textlint --fix \"articles/chapters/*.re\"",
+    "lint": "bun -b oxlint --fix && bun -b textlint --fix \"articles/chapters/*.re\" && bun -b markdownlint-cli2 --fix \"**/*.md\"",
     "format": "bun -b oxfmt --write",
     "dev": "bun run web && bun -b concurrently -k -n watch,serve \"bun run dev:watch\" \"bun run dev:serve\"",
     "dev:watch": "bun -b onchange \"articles/chapters/**/*\" -- bun run web",
@@ -18,26 +21,40 @@
     "epub": "bun scripts/build.ts \"bundle exec rake epub\"",
     "web": "bun scripts/build.ts \"bundle exec rake web\"",
     "idgxml": "bun scripts/build.ts \"bundle exec rake idgxml\"",
-    "vivliostyle": "bun scripts/build.ts \"bundle exec rake vivliostyle\""
+    "vivliostyle": "bun scripts/build.ts \"bundle exec rake vivliostyle\"",
+    "skills:add": "bun -b skills add",
+    "skills:list": "bun -b skills list",
+    "skills:update": "bun -b skills update -y",
+    "skills:sync": "bun -b skills experimental_sync -a github-copilot -y"
   },
   "devDependencies": {
+    "@textlint-ja/textlint-rule-preset-ai-writing": "1.7.0",
     "@textlint-rule/textlint-rule-no-unmatched-pair": "2.0.4",
     "@types/js-yaml": "^4.0.9",
     "bun-types": "^1.4.4",
     "concurrently": "10.0.6",
     "js-yaml": "4.1.0",
+    "markdownlint-cli2": "0.24.0",
     "onchange": "7.1.0",
     "oxfmt": "0.76.0",
     "oxlint": "1.91.0",
     "oxlint-tsgolint": "7.0.2006",
+    "skills": "1.7.6",
+    "slopless": "0.2.40",
     "textlint": "15.8.0",
     "textlint-plugin-review": "0.4.1",
     "textlint-rule-en-max-word-count": "2.0.1",
     "textlint-rule-ja-hiraku": "1.4.0",
     "textlint-rule-max-appearence-count-of-words": "1.0.1",
     "textlint-rule-no-empty-section": "1.1.0",
+    "textlint-rule-preset-ai-words-ja": "1.2.1",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "textlint-rule-prh": "6.1.1",
     "vite": "8.3.6"
-  }
+  },
+  "skills": [
+    "npm:slopless",
+    "hardikpandya/stop-slop",
+    "nanaism/yomiyasu"
+  ]
 }

@@ -22,3 +22,8 @@ articles/_refiles/
 # vscode setting folder
 .vscode/
 devcontainer-lock.json
+
+# Agent files
+.agents/skills/*
+!.agents/skills/google-tech-writing/
+!.agents/skills/japanese-tech-writing/

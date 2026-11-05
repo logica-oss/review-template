@@ -1,7 +1,9 @@
 {
   "$schema": "https://textlint.github.io/schema/textlintrc.json",
   "plugins": ["review"],
+  "filters": { "comments": true },
   "rules": {
+    "@textlint-ja/preset-ai-writing": true,
     "preset-ja-technical-writing": {
       "sentence-length": { "max": 160 },
       "max-comma": { "max": 6 },
@@ -14,6 +16,8 @@
     "no-empty-section": true,
     "en-max-word-count": { "max": 50 },
     "max-appearence-count-of-words": { "max": 10 },
-    "@textlint-rule/no-unmatched-pair": true
+    "@textlint-rule/no-unmatched-pair": true,
+    "preset-ai-words-ja": true,
+    "preset-slopless": true
   }
 }

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "skills": {
+    "slopless": {
+      "source": "slopless",
+      "sourceType": "node_modules",
+      "skillPath": "skills/slopless/SKILL.md",
+      "version": "0.2.40",
+      "computedHash": "ec4509d45857595f68ec9d6dddbd83245965caaa57d61b86b9f03f12253c38f5"
+    },
+    "stop-slop": {
+      "source": "hardikpandya/stop-slop",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "617bf97d33162a6bd0da4f40a97aac589de58e5a6c9cf011ed6108992210e7cb",
+      "via": "."
+    },
+    "yomiyasu": {
+      "source": "nanaism/yomiyasu",
+      "sourceType": "github",
+      "skillPath": "skills/yomiyasu/SKILL.md",
+      "computedHash": "931929b8d7be2c1413927dec7c7ad44b2fba5caee2cd8394a52e7727d3a2c959",
+      "via": "."
+    }
+  }
+}

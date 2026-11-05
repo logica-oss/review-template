@@ -53,6 +53,7 @@ fi
 # --- Ruby gems (global, same as vvakame/review image) ---
 # NOTE: review gem version is managed by Gemfile (single source of truth).
 gem install bundler -N
+chown -R "${_REMOTE_USER:-root}" "$(gem environment gemdir)"
 
 # --- Fonts + browser deps for Playwright / Vivliostyle ---
 if [ "$INSTALL_FONTS" = "true" ]; then

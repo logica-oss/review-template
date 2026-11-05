@@ -3,9 +3,9 @@
 このリポジトリはRe:VIEW用の書籍テンプレートです。Re:VIEWバージョン5.9に対応します。
 メンテナンスはTechBoosterが行っています。
 
- * [B5紙面サンプル（PDF）](https://github.com/TechBooster/ReVIEW-Template/tree/master/pdf-sample/TechBooster-Template-B5.pdf)
- * [A5紙面サンプル（PDF）](https://github.com/TechBooster/ReVIEW-Template/tree/master/pdf-sample/TechBooster-Template-A5.pdf)
- * [B5紙面電子書籍サンプル（PDF）](https://github.com/TechBooster/ReVIEW-Template/tree/master/pdf-sample/TechBooster-Template-ebook.pdf)
+- [B5紙面サンプル（PDF）](https://github.com/TechBooster/ReVIEW-Template/tree/master/pdf-sample/TechBooster-Template-B5.pdf)
+- [A5紙面サンプル（PDF）](https://github.com/TechBooster/ReVIEW-Template/tree/master/pdf-sample/TechBooster-Template-A5.pdf)
+- [B5紙面電子書籍サンプル（PDF）](https://github.com/TechBooster/ReVIEW-Template/tree/master/pdf-sample/TechBooster-Template-ebook.pdf)
 
 ## このテンプレートのビルドの仕方は？
 
@@ -44,13 +44,14 @@ graphvizを使ったのでbrew install graphvizとかが必要かもしれませ
 $ gem install bundler
 $ git clone git@github.com:TechBooster/ReVIEW-Template.git
 $ cd ReVIEW-Template
-$ npm install
-$ npm run pdf
+$ bun install
+$ bun run pdf
 ```
 
 ### Re:VIEWコマンドでPDFを出力する
 
-セットアップが完了していれば `npm run pdf` のかわりに
+セットアップが完了していれば `bun run pdf` のかわりに
+
 ```
 $ cd ReVIEW-Template/articles
 $ rake pdf
@@ -72,7 +73,7 @@ PDF以外に、EPUB・Webページ・テキストを出力することもでき�
 ### EPUBを出力する
 
 ```
-$ npm run epub
+$ bun run epub
 ```
 
 または
@@ -92,7 +93,7 @@ $ review-epubmaker config.yml
 ### Webページを出力する（webrootフォルダ）
 
 ```
-$ npm run web
+$ bun run web
 ```
 
 または
@@ -112,7 +113,7 @@ $ review-webmaker config.yml
 ### テキストファイルを出力する
 
 ```
-$ npm run text
+$ bun run text
 ```
 
 または
@@ -137,7 +138,7 @@ Dockerがうまく動くようになっている場合、以下のコマンド�
 ```
 $ docker pull ghcr.io/vvakame/review:5.9 (ghcrからのダウンロードの場合)
 $ docker pull vvakame/review:5.9 (Docker Hubからのダウンロードの場合)
-$ bash ./build-in-docker.sh
+$ bun run pdf:docker
 ```
 
 ## 紙面や設定ファイルの切り替え
@@ -183,9 +184,8 @@ texdocumentclass: ["review-jsbook", "media=ebook,paper=b5,serial_pagination=true
 このconfig-ebook.ymlを使ってPDFを生成するには次のようにします。
 
 ```
-$ REVIEW_CONFIG_FILE=config-ebook.yml npm run pdf
+$ REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
 ```
-
 
 または
 
@@ -204,7 +204,7 @@ $ review-pdfmaker config-ebook.yml
 Docker環境でも以下のように指定できます。
 
 ```
-$ REVIEW_CONFIG_FILE=config-ebook.yml ./build-in-docker.sh
+$ REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf:docker
 ```
 
 Docker Composeを利用すると以下のように指定できます。
@@ -212,16 +212,17 @@ Docker Composeを利用すると以下のように指定できます。
 ```
 $ docker compose up
 ```
+
 または
 
 ```
-$ docker compose run -e REVIEW_CONFIG_FILE=config.yml --rm review npm run pdf
+$ docker compose run -e REVIEW_CONFIG_FILE=config.yml --rm review bun run pdf
 ```
 
 紙版と電子版では以下のような違いがあります。
 
- * 紙版：印刷用に、トンボ、デジタルトンボを設置。いくつかの同人誌印刷所で要求事項となっているノドへの隠しノンブル、大扉からのアラビア数字通し。ハイパーリンクは無効化。表紙（cover）は無視。
- * 電子版：電子配布用に、仕上がり紙面サイズ。大扉からのアラビア数字通し。ハイパーリンク有効。表紙（cover）を中央合わせで配置。
+- 紙版：印刷用に、トンボ、デジタルトンボを設置。いくつかの同人誌印刷所で要求事項となっているノドへの隠しノンブル、大扉からのアラビア数字通し。ハイパーリンクは無効化。表紙（cover）は無視。
+- 電子版：電子配布用に、仕上がり紙面サイズ。大扉からのアラビア数字通し。ハイパーリンク有効。表紙（cover）を中央合わせで配置。
 
 ### EPUB/Web出力用CSSファイルの編集方法
 
@@ -277,11 +278,11 @@ Re:VIEW 3以降ではTeX関連のファイルが大きく変わっているた�
 
 書き戻しではなくどうしても古いconfig.ymlの書き換えで対処したいという場合は、以下の点に注意してください。
 
- * review_versionパラメータ：値を5.0にする必要があります。
- * texstyleパラメータ：値を["reviewmacro"]とします。
- * texdocumentclassパラメータ：2つの引数の内容は大きく変わっています。
- * texcommandパラメータ：オプションを指定していた場合、texoptionsパラメータに移設する必要があります。
- * dvicommandパラメータ：オプションを指定していた場合、dvioptionsパラメータに移設する必要があります。
+- review_versionパラメータ：値を5.0にする必要があります。
+- texstyleパラメータ：値を["reviewmacro"]とします。
+- texdocumentclassパラメータ：2つの引数の内容は大きく変わっています。
+- texcommandパラメータ：オプションを指定していた場合、texoptionsパラメータに移設する必要があります。
+- dvicommandパラメータ：オプションを指定していた場合、dvioptionsパラメータに移設する必要があります。
 
 layouts/layouts.tex.erbやsty/techbooster-doujin.styに何らかのカスタマイズを加えていた場合は、sty/review-custom.styに類似の実装をする必要があります。Re:VIEW 2系のTechBoosterテンプレートはマクロ定義時点から書き換える手法をとっていましたが、Re:VIEW 3系から`\renewcommand`・`\reenvironment`・`\def`などの命令を使って既存のマクロ定義を再定義するというやり方に変わっています。
 
@@ -289,35 +290,35 @@ layouts/layouts.tex.erbやsty/techbooster-doujin.styに何らかのカスタマ�
 
 Re:VIEW 3以降で変わったことの詳細については、以下を参照してください。
 
-* [Re:VIEW 5.9 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review590.html)
-* [Re:VIEW 5.8 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review580.html)
-* [Re:VIEW 5.7 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review570.html)
-* [Re:VIEW 5.6 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review560.html)
-* [Re:VIEW 5.5 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review550.html)
-* [Re:VIEW 5.4 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review540.html)
-* [Re:VIEW 5.3 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review530.html)
-* [Re:VIEW 5.2 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review520.html)
-* [Re:VIEW 5.1 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review510.html)
-* [Re:VIEW 5.0 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review500.html)
-* [Re:VIEW 4.2 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review420.html)
-* [Re:VIEW 4.1 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review410.html)
-* [Re:VIEW 4.0 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review400.html)
-* [Re:VIEW 3からのLaTeX処理](https://review-knowledge-ja.readthedocs.io/ja/latest/latex/review3-latex.html)
+- [Re:VIEW 5.9 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review590.html)
+- [Re:VIEW 5.8 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review580.html)
+- [Re:VIEW 5.7 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review570.html)
+- [Re:VIEW 5.6 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review560.html)
+- [Re:VIEW 5.5 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review550.html)
+- [Re:VIEW 5.4 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review540.html)
+- [Re:VIEW 5.3 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review530.html)
+- [Re:VIEW 5.2 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review520.html)
+- [Re:VIEW 5.1 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review510.html)
+- [Re:VIEW 5.0 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review500.html)
+- [Re:VIEW 4.2 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review420.html)
+- [Re:VIEW 4.1 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review410.html)
+- [Re:VIEW 4.0 での変更点](https://review-knowledge-ja.readthedocs.io/ja/latest/releases/review400.html)
+- [Re:VIEW 3からのLaTeX処理](https://review-knowledge-ja.readthedocs.io/ja/latest/latex/review3-latex.html)
 
 ### Re:VIEW 2用のテンプレートの入手
 
 何らかの理由でどうしてもRe:VIEW 2系のTechBoosterテンプレートが必要なときには、以下のリリースページから「review-2.4」リリースアーカイブファイルを利用してください。
 
-* https://github.com/TechBooster/ReVIEW-Template/releases
+- https://github.com/TechBooster/ReVIEW-Template/releases
 
 ## 権利
 
- * 設定ファイル、テンプレートなど制作環境（techbooster-doujin-base.styなど）はMITライセンスです
-   * 再配布などMITライセンスで定める範囲で権利者表記をおねがいします
-   * 本設定を使って生成した書籍は現段階のRe:VIEWではソフトウェアたりえません。したがってライセンスは発生しません（あとがきなどへの表記はあると嬉しいものの生成物での表記は不要です）
- * articles/styにあるファイルには以下のライセンスが適用されています。
-   * review-jsbook.cls, review-base.sty, review-style.sty, review-custom.sty: MIT License
-   * jumoline.sty: The LaTeX Project Public License
-   * plistings.sty: MIT License
-   * gentombow.sty: BSD License
-   * jsbook.cls: BSD License
+- 設定ファイル、テンプレートなど制作環境（techbooster-doujin-base.styなど）はMITライセンスです
+  - 再配布などMITライセンスで定める範囲で権利者表記をおねがいします
+  - 本設定を使って生成した書籍は現段階のRe:VIEWではソフトウェアたりえません。したがってライセンスは発生しません（あとがきなどへの表記はあると嬉しいものの生成物での表記は不要です）
+- articles/styにあるファイルには以下のライセンスが適用されています。
+  - review-jsbook.cls, review-base.sty, review-style.sty, review-custom.sty: MIT License
+  - jumoline.sty: The LaTeX Project Public License
+  - plistings.sty: MIT License
+  - gentombow.sty: BSD License
+  - jsbook.cls: BSD License

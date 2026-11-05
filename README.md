@@ -7,7 +7,7 @@ Re:VIEW用の書籍テンプレート
 ## 必要な環境
 
 - mise
-- PDFをビルドする場合はTeX環境、またはDocker / Dev Container
+- PDFをビルドする場合はTeX環境、またはDocker / DevContainer
 
 TeXの導入をしない場合でもEPUB・Web・テキストの出力は可能です。
 
@@ -37,7 +37,7 @@ bun run skills:sync
 `mise.toml`で固定したツールを先にインストールします。
 
 ```sh
-mise i
+mise i # DevContainerの場合は不要
 bun install
 bun run pdf
 ```

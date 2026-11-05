@@ -1,5 +1,4 @@
-review-jsbook.cls Users Guide
-====================
+# review-jsbook.cls Users Guide
 
 現時点における最新版 `jsbook.cls  2018/06/23 jsclasses (okumura, texjporg)` をベースに、Re:VIEW 向け review-jsbook.cls を実装しました。
 

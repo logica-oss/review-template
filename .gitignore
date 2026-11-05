@@ -1,12 +1,6 @@
 node_modules/
 Gemfile.lock
-*.pdf
+bun.lockb
 .sass-cache/
-
-articles/*.pdf
-articles/*.epub
-articles/*.html
-# articles/*.md
-articles/*.xml
-articles/*.txt
+dist/
 articles/_refiles/

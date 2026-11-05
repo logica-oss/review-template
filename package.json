@@ -5,6 +5,8 @@
   "description": "",
   "license": "MIT",
   "scripts": {
+    "lint": "textlint \"articles/chapters/*.re\"",
+    "format": "oxfmt --write",
     "prepare": "gem install bundler -N && bundle install",
     "pdf:docker": "docker run -t --rm -v \"$(pwd)\":/book vvakame/review:latest /bin/bash -ci \"cd /book && bundle install && REVIEW_CONFIG_FILE=${REVIEW_CONFIG_FILE:-config.yml} bundle exec rake pdf\"",
     "pdf": "bun scripts/build.ts \"bundle exec rake pdf\"",
@@ -13,9 +15,7 @@
     "epub": "bun scripts/build.ts \"bundle exec rake epub\"",
     "web": "bun scripts/build.ts \"bundle exec rake web\"",
     "idgxml": "bun scripts/build.ts \"bundle exec rake idgxml\"",
-    "vivliostyle": "bun scripts/build.ts \"bundle exec rake vivliostyle\"",
-    "lint": "textlint \"articles/chapters/*.re\"",
-    "format": "oxfmt --write"
+    "vivliostyle": "bun scripts/build.ts \"bundle exec rake vivliostyle\""
   },
   "dependencies": {},
   "devDependencies": {

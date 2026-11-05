@@ -22,11 +22,15 @@ require 'fileutils'
 require 'yaml'
 require 'date'
 
+# Manuscripts (.re or .md) live here; converted copies go to _refiles.
+SRC_DIR = 'chapters'
+
 def make_mdre(ch, p2r, path)
-  if File.exist?(ch) # re file
-    FileUtils.cp(ch, path)
-  elsif File.exist?(ch.sub(/\.re\Z/, '.md')) # md file
-    system("#{p2r} #{ch.sub(/\.re\Z/, '.md')} > #{path}/#{ch}")
+  src = File.join(SRC_DIR, ch)
+  if File.exist?(src) # re file
+    FileUtils.cp(src, path)
+  elsif File.exist?(src.sub(/\.re\Z/, '.md')) # md file
+    system("#{p2r} #{src.sub(/\.re\Z/, '.md')} > #{path}/#{ch}")
   end
   sh "review-preproc -r --tabwidth=2 #{File.join(path, ch)}"
 end
@@ -82,9 +86,8 @@ task :pandoc2review do
 end
 
 CLEAN.include('_refiles')
-Rake::Task[BOOK_PDF].enhance([:pandoc2review])
-Rake::Task[BOOK_EPUB].enhance([:pandoc2review])
-Rake::Task[WEBROOT].enhance([:pandoc2review])
-Rake::Task[TEXTROOT].enhance([:pandoc2review])
-Rake::Task[TOPROOT].enhance([:pandoc2review])
-Rake::Task[IDGXMLROOT].enhance([:pandoc2review])
+Rake::Task[BOOK_PDF_OUT].enhance([:pandoc2review])
+Rake::Task[BOOK_EPUB_OUT].enhance([:pandoc2review])
+Rake::Task[WEBROOT_OUT].enhance([:pandoc2review])
+Rake::Task[TEXTROOT_OUT].enhance([:pandoc2review])
+Rake::Task[IDGXMLROOT_OUT].enhance([:pandoc2review])

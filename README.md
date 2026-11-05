@@ -6,46 +6,18 @@ Re:VIEW用の書籍テンプレート
 
 ## 必要な環境
 
-- Bun
-- Ruby / Bundler（`Gemfile`参照）
-- PDFをビルドする場合はTeX環境、またはDocker / Dev Container
+- mise
+- PDFをビルドする場合はTeX環境、またはDocker / DevContainer
 
 TeXの導入をしない場合でもEPUB・Web・テキストの出力は可能です。
 
-## ビルド
-
-```sh
-bun install
-bundle install
-bun run pdf
-```
-
-成果物は`dist/`に出力されます。
-
-```sh
-bun run pdf
-bun run epub
-bun run web
-bun run text
-```
-
-## 開発用プレビュー
-
-`articles/`の変更を監視して`web`を再ビルドし、Viteで配信します。
-
-```sh
-bun run dev
-```
-
-`http://localhost:8000`で確認できます。ポート変更は`PORT=3000 bun run dev`です。
-
-### 設定
+## 設定
 
 - 原稿は`articles/chapters/`
 - 章立ては`articles/catalog.yml`
 - 書誌・紙面設定は`articles/config.yml`
 
-### 校正
+## 校正
 
 文章のLintにはtextlintを用意しています。
 
@@ -60,7 +32,36 @@ bun run lint
 bun run skills:sync
 ```
 
-## Dockerを使う
+## ビルド
+
+`mise.toml`で固定したツールを先にインストールします。
+
+```sh
+mise i # DevContainerの場合は不要
+bun install
+bun run pdf
+```
+
+成果物は`dist/`に出力されます。
+
+```sh
+bun run pdf
+bun run epub
+bun run web
+bun run text
+```
+
+### 開発用プレビュー
+
+`articles/`の変更を監視して`web`を再ビルドし、Viteで配信します。
+
+```sh
+bun run dev
+```
+
+`http://localhost:8000`で確認できます。ポート変更は`PORT=3000 bun run dev`です。
+
+### Dockerを使う
 
 セットアップ済みのDockerイメージを使ったビルドも可能です。
 

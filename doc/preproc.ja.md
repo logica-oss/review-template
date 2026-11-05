@@ -24,9 +24,11 @@ end
 //}
 ```
 
-「`#@mapfile(ファイル名)`」から「`#@end`」は、指定したファイル名のファイル全体を本文中に埋め込むための記法です。埋め込む際には、`review-preproc`コマンドを実行します。
+「`#@mapfile(ファイル名)`」から「`#@end`」は、指定したファイル名のファイル全体を本文中に埋め込むための記法です。  
+埋め込む際には、`review-preproc`コマンドを実行します。
 
-まず、以下のように、引用したい部分に「`#@mapfile()`」と「`#@end`」だけを書きます。ここでは`//list`ブロック内にこの2行だけを記述しています。
+まず、以下のように、引用したい部分に「`#@mapfile()`」と「`#@end`」だけを書きます。  
+ここでは`//list`ブロック内にこの2行だけを記述しています。
 
 ```review
 //list[hello.rb.1][hello.re]{
@@ -35,16 +37,17 @@ end
 //}
 ```
 
-このソースに対して、`review-preproc`コマンドを実行します。すると、変換結果の*.reファイルを標準出力に出力します。
+このソースに対して、`review-preproc`コマンドを実行します。  
+すると、変換結果の*.reファイルを標準出力に出力します。
 
 ```shell-session
-$ review-preproc hello.re
+review-preproc hello.re
 ```
 
 `--replace`オプションをつければ、ファイルそのものを置き換えるようになります。
 
 ```shell-session
-$ review-preproc --replace hello.re
+review-preproc --replace hello.re
 ```
 
 なお、rakeを使ってビルドしている場合、Rakefileに以下のような記述を追加すると、このコマンドを実行するtaskが定義されます。
@@ -61,14 +64,17 @@ end
 以下のように実行すれば、コマンドが実行されます。
 
 ```shell-session
-$ rake preproc
+rake preproc
 ```
 
 ## `#@maprange`
 
-対象ファイルの一部だけ抜粋することもできます。こちらは「`#@maprange`」という記法を使います。
+対象ファイルの一部だけ抜粋することもできます。  
+こちらは「`#@maprange`」という記法を使います。
 
-対象ファイルの抜粋したい部分の前後に、「`#@range_begin(ID)`」と「`#@range_end`」という記法を埋め込んでおきます。`#@range_begin`の引数には、その断片を抽出する際に使用するIDを指定します。以下の例では「sample」というIDにしています。
+対象ファイルの抜粋したい部分の前後に、「`#@range_begin(ID)`」と「`#@range_end`」という記法を埋め込んでおきます。  
+`#@range_begin`の引数には、その断片を抽出する際に使用するIDを指定します。  
+以下の例では「sample」というIDにしています。
 
 ```ruby
 #!/usr/bin/env ruby
@@ -95,7 +101,8 @@ end
 //}
 ```
 
-あとは、先ほど同様、`review-preproc`コマンドか`rake preproc`コマンドを実行します。そうすると、`scripts/range.rb`の一部が抽出されて埋め込まれます。
+あとは、先ほど同様、`review-preproc`コマンドか`rake preproc`コマンドを実行します。  
+そうすると、`scripts/range.rb`の一部が抽出されて埋め込まれます。
 
 ```review
 //list[range.rb][range.rb(抜粋)]{
@@ -109,9 +116,11 @@ end
 
 ## `#@@maprange`
 
-もっとも、Ruby以外では「`#@range_begin`」などがコメントと解釈されないこともあります。そのような場合、その言語のコメントの中に「`#@@range_begin`」と「`#@@range_end`」とを記述します。
+もっとも、Ruby以外では「`#@range_begin`」などがコメントと解釈されないこともあります。  
+そのような場合、その言語のコメントの中に「`#@@range_begin`」と「`#@@range_end`」とを記述します。
 
-Cのソースを例にします。対象となるrange.cは以下です。
+Cのソースを例にします。  
+対象となるrange.cは以下です。
 
 ```c
 #include <stdio.h>
@@ -134,7 +143,7 @@ put_hello関数の定義の前後で「`#@@range_begin`」と「`#@@range_end`�
 
 これに対し、*.reファイルでは`#@maprange(scripts/range.c,sample)`と`#@end`を記述します。
 
-```
+```review
 //list[range.c][range.c(抜粋)]{
 #@maprange(scripts/range.c,sample)
 #@end
@@ -143,7 +152,7 @@ put_hello関数の定義の前後で「`#@@range_begin`」と「`#@@range_end`�
 
 変換した結果、以下のようになります。
 
-```
+```review
 //list[range.c][range.c(抜粋)]{
 #@maprange(scripts/range.c,sample)
 void

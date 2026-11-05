@@ -1,6 +1,7 @@
 # `review-preproc` User Guide
 
-Re:VIEW has a preprocessor, `review-preproc`. It can embed a (part of) file into *.re files.
+Re:VIEW has a preprocessor, `review-preproc`.  
+It can embed a (part of) file into *.re files.
 
 ## `#@mapfile`
 
@@ -24,7 +25,8 @@ end
  //}
 ```
 
-`#@mapfile(filename)` and `#@end` are markers for preprocessor. You can embed and update the content of the file `filename` into Re:VIEW file with `review-preproc` command.
+`#@mapfile(filename)` and `#@end` are markers for preprocessor.  
+You can embed and update the content of the file `filename` into Re:VIEW file with `review-preproc` command.
 
 First, add `#@mapfile()` and `#@end` on the document.
 
@@ -35,16 +37,17 @@ First, add `#@mapfile()` and `#@end` on the document.
 //}
 ```
 
-Then execute `review-preproc` command. The command display the result on stdout.
+Then execute `review-preproc` command.  
+The command display the result on stdout.
 
 ```shell-session
-$ review-preproc hello.re
+review-preproc hello.re
 ```
 
 With `--replace` option, `review-preproc` replaces the Re:VIEW file.
 
 ```shell-session
-$ review-preproc --replace hello.re
+review-preproc --replace hello.re
 ```
 
 If you use `rake` to build Re:VIEW document, you can add the code to Rakefile to define a task of `review-preproc`.
@@ -61,14 +64,14 @@ end
 Then, you can execute preprocessor with `rake`.
 
 ```shell-session
-$ rake preproc
+rake preproc
 ```
 
 ## `#@maprange`
 
 You also can embed a part of the target file with `#@maprange` marker.
 
-Add `#@range_begin(ID)` and `#@range_end` in the target file you want to embed.
+Add `#@range_begin(ID)` and `#@range_end` in the target file you want to embed.  
 In `#@range_begin(ID)`, you must add ID as parameger to identify the part.
 
 In the code below, `sample` is the ID of the range to embed.
@@ -112,9 +115,11 @@ After that, execute `review-preproc` or `rake preproc`, and you get the *.re fil
 
 ## `#@@maprange`
 
-But in some language, a line `#@range_begin` is not a comment. If you want to embed some code of such languages, you can use new markers `#@@range_begin` and `#@@range_end` into a comment in the target document.
+But in some language, a line `#@range_begin` is not a comment.  
+If you want to embed some code of such languages, you can use new markers `#@@range_begin` and `#@@range_end` into a comment in the target document.
 
-Let's explain how to do. A target file `range.c` is below:
+Let's explain how to do.  
+A target file `range.c` is below:
 
 ```c
 #include <stdio.h>
@@ -137,7 +142,7 @@ There are markers `#@@range_begin` and `#@@range_end` around `put_hello` method.
 
 In `*.re`, add `#@maprange(scripts/range.c,sample)` and `#@end`.
 
-```
+```review
 //list[range.c][range.c(抜粋)]{
 #@maprange(scripts/range.c,sample)
 #@end
@@ -146,7 +151,7 @@ In `*.re`, add `#@maprange(scripts/range.c,sample)` and `#@end`.
 
 With `review-preproc`, we get the result of conversion like below:
 
-```
+```review
 //list[range.c][range.c(抜粋)]{
 #@maprange(scripts/range.c,sample)
 void

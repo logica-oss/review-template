@@ -1,14 +1,17 @@
 {
   "name": "review-template",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "private": true,
   "description": "",
   "license": "MIT",
   "scripts": {
-    "lint": "textlint \"articles/chapters/*.re\"",
-    "format": "oxfmt --write",
     "prepare": "gem install bundler -N && bundle install",
-    "pdf:docker": "docker run -t --rm -v \"$(pwd)\":/book vvakame/review:latest /bin/bash -ci \"cd /book && bundle install && REVIEW_CONFIG_FILE=${REVIEW_CONFIG_FILE:-config.yml} bundle exec rake pdf\"",
+    "lint": "bun -b textlint \"articles/chapters/*.re\"",
+    "format": "bun -b oxfmt --write",
+    "dev": "bun run web && bun -b concurrently -k -n watch,serve \"bun run dev:watch\" \"bun run dev:serve\"",
+    "dev:watch": "bun -b onchange \"articles/chapters/**/*\" \"articles/*.yml\" \"articles/*.css\" \"articles/images/**/*\" \"articles/layouts/**/*\" \"articles/sty/**/*\" -- bun run web",
+    "dev:serve": "bun -b vite dist/webroot --port ${PORT:-8000} --strictPort",
+    "pdf:docker": "docker run -t --rm -v \"$(pwd)\":/book vvakame/review:latest /bin/bash -ci \"cd /book && bundle install && cd articles && REVIEW_CONFIG_FILE=${REVIEW_CONFIG_FILE:-config.yml} bundle exec rake pdf\"",
     "pdf": "bun scripts/build.ts \"bundle exec rake pdf\"",
     "md": "bun scripts/build.ts \"bundle exec review-compile --target=markdown\"",
     "text": "bun scripts/build.ts \"bundle exec rake text\"",
@@ -17,10 +20,13 @@
     "idgxml": "bun scripts/build.ts \"bundle exec rake idgxml\"",
     "vivliostyle": "bun scripts/build.ts \"bundle exec rake vivliostyle\""
   },
-  "dependencies": {},
   "devDependencies": {
     "@textlint-rule/textlint-rule-no-unmatched-pair": "2.0.4",
+    "@types/js-yaml": "^4.0.9",
+    "bun-types": "^1.4.4",
+    "concurrently": "10.0.6",
     "js-yaml": "4.1.0",
+    "onchange": "7.1.0",
     "oxfmt": "0.76.0",
     "textlint": "15.8.0",
     "textlint-plugin-review": "0.4.1",
@@ -29,6 +35,7 @@
     "textlint-rule-max-appearence-count-of-words": "1.0.1",
     "textlint-rule-no-empty-section": "1.1.0",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
-    "textlint-rule-prh": "6.1.1"
+    "textlint-rule-prh": "6.1.1",
+    "vite": "8.3.6"
   }
 }

@@ -3,40 +3,32 @@
   "version": "0.0.2",
   "private": true,
   "description": "",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TechBooster/ReVIEW-Template.git"
-  },
-  "author": "TechBooster",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TechBooster/ReVIEW-Template/issues"
-  },
-  "homepage": "https://github.com/TechBooster/ReVIEW-Template#readme",
-  "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=10.8.0"
-  },
   "scripts": {
-    "global-bundler": "gem install bundler",
-    "global": "npm run global-bundler",
-    "pdf": "grunt pdf",
-    "md": "grunt markdown",
-    "html": "grunt html",
-    "text": "grunt text",
-    "epub": "grunt epub",
-    "web": "grunt web",
-    "idgxml": "grunt idgxmlmaker",
-    "vivliostyle": "grunt vivliostyle",
-    "test": "npm run html"
+    "prepare": "gem install bundler -N && bundle install",
+    "pdf:docker": "docker run -t --rm -v \"$(pwd)\":/book vvakame/review:latest /bin/bash -ci \"cd /book && bundle install && REVIEW_CONFIG_FILE=${REVIEW_CONFIG_FILE:-config.yml} bundle exec rake pdf\"",
+    "pdf": "bun scripts/build.ts \"bundle exec rake pdf\"",
+    "md": "bun scripts/build.ts \"bundle exec review-compile --target=markdown\"",
+    "text": "bun scripts/build.ts \"bundle exec rake text\"",
+    "epub": "bun scripts/build.ts \"bundle exec rake epub\"",
+    "web": "bun scripts/build.ts \"bundle exec rake web\"",
+    "idgxml": "bun scripts/build.ts \"bundle exec rake idgxml\"",
+    "vivliostyle": "bun scripts/build.ts \"bundle exec rake vivliostyle\"",
+    "lint": "textlint \"articles/chapters/*.re\"",
+    "format": "oxfmt --write"
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "^1.6.1",
-    "grunt-cli": "^1.4.3",
-    "grunt-contrib-clean": "^2.0.1",
-    "grunt-shell": "^4.0.0",
-    "js-yaml": "^4.1.0",
-    "load-grunt-tasks": "^5.1.0"
+    "@textlint-rule/textlint-rule-no-unmatched-pair": "2.0.4",
+    "js-yaml": "4.1.0",
+    "oxfmt": "0.76.0",
+    "textlint": "15.8.0",
+    "textlint-plugin-review": "0.4.1",
+    "textlint-rule-en-max-word-count": "2.0.1",
+    "textlint-rule-ja-hiraku": "1.4.0",
+    "textlint-rule-max-appearence-count-of-words": "1.0.1",
+    "textlint-rule-no-empty-section": "1.1.0",
+    "textlint-rule-preset-ja-technical-writing": "12.0.2",
+    "textlint-rule-prh": "6.1.1"
   }
 }

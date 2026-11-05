@@ -1,0 +1,27 @@
+{
+  "id": "review",
+  "version": "1.0.0",
+  "name": "Re:VIEW (Japanese TeXLive + Ruby)",
+  "description": "Installs the Re:VIEW publishing toolchain equivalent to vvakame/docker-review: Japanese TeXLive, MeCab, pandoc, PlantUML, Playwright system deps. Ruby gems (review, etc.) are managed by Gemfile via bundle install.",
+  "documentationURL": "https://github.com/vvakame/docker-review",
+  "licenseURL": "https://github.com/vvakame/docker-review/blob/master/LICENSE.md",
+  "keywords": ["review", "texlive", "japanese", "publishing", "pandoc", "plantuml"],
+  "installsAfter": ["ghcr.io/devcontainers-extra/features/bun"],
+  "options": {
+    "installPlaywright": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install Playwright via bun and Chromium system deps for screenshots / Vivliostyle PDF."
+    },
+    "installFonts": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install Noto CJK / emoji fonts for Playwright / Vivliostyle rendering."
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["yuqquu.review-starter-syntax-highlight"]
+    }
+  }
+}

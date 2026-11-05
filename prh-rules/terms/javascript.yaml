@@ -2,19 +2,19 @@
 meta:
   reviewer:
     - vvakame
-  related: http://www.ecma-international.org/publications/standards/Ecma-262.htm 
-  rules:   https://github.com/prh/rules
+  related: http://www.ecma-international.org/publications/standards/Ecma-262.htm
+  rules: https://github.com/prh/rules
 
 version: 1
 rules:
   - expected: jQuery
   - expected: Angular 2
-    pattern:  Angular2
+    pattern: Angular2
   - expected: Web Components
-    pattern:  WebComponents
+    pattern: WebComponents
   - expected: Custom Elements
-    pattern:  CustomElements
+    pattern: CustomElements
   - expected: Shadow DOM
-    pattern:  ShadowDOM
+    pattern: ShadowDOM
   - expected: Incremental DOM
-    pattern:  IncrementalDOM
+    pattern: IncrementalDOM

@@ -4,31 +4,31 @@ meta:
     - vvakame
     - mhidaka
   related: https://www.android.com/
-  rules:   https://github.com/prh/rules
+  rules: https://github.com/prh/rules
 
 version: 1
 rules:
   - expected: API Level
-    pattern:  API level
+    pattern: API level
     prh: APIドキュメントでも揺れてますが、Levelで統一してます
   - expected: Android Studio
-    pattern:  AndroidStudio
+    pattern: AndroidStudio
     prh: 正式名称はAndroid Studioです
   - expected: JUnit 5
-    pattern:  JUnit5
+    pattern: JUnit5
   - expected: JUnit 4
-    pattern:  JUnit4
+    pattern: JUnit4
   - expected: View
-    pattern:  Vew
+    pattern: Vew
   - expected: Deep Link
-    pattern:  DeepLink
+    pattern: DeepLink
   - expected: Jetpack
-    pattern:  JetPack
+    pattern: JetPack
   - expected: aidl
-    pattern:  /adil/
+    pattern: /adil/
   - expected: AIDL
-    pattern:  /ADIL/
+    pattern: /ADIL/
   - expected: Safe Args
-    pattern:  safeargs
+    pattern: safeargs
   - expected: Navigation
-    pattern:  Navigtion
+    pattern: Navigtion

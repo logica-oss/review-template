@@ -1,14 +1,20 @@
 {
-	"image": "vvakame/review:5.9",
-	"settings": {
-		"editor.wordWrap": "on"
-	},
-	"extensions": [
-		"yuqquu.review-starter-syntax-highlight"
-	],
-	"postCreateCommand": [
-		"npm",
-		"ci",
-	],
-	"remoteUser": "root"
+  "name": "Re:VIEW",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.4-bookworm",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers-extra/features/bun:1.1.0": {
+      "version": "latest"
+    },
+    "./review": {
+      "installPlaywright": true,
+      "installFonts": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["yuqquu.review-starter-syntax-highlight"]
+    }
+  },
+  "postCreateCommand": "bun install --frozen-lockfile"
 }

@@ -14,6 +14,7 @@ TeXの導入をしない場合でもEPUB・Web・テキストの出力は可能�
 
 ```sh
 bun install
+bundle install
 bun run pdf
 ```
 

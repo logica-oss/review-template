@@ -8,7 +8,6 @@
     "url": "https://github.com/logica-oss/review-template.git"
   },
   "scripts": {
-    "prepare": "bundle install",
     "lint": "bun -b oxlint --fix && bun -b textlint --fix \"articles/chapters/*.re\" && bun -b markdownlint-cli2 --fix \"**/*.md\"",
     "format": "bun -b oxfmt --write",
     "dev": "bun run web && bun -b concurrently -k -n watch,serve \"bun run dev:watch\" \"bun run dev:serve\"",

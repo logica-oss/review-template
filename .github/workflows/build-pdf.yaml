@@ -32,6 +32,8 @@ jobs:
           persist-credentials: false
       - name: Setup Bun environment
         uses: logica-oss/actions-toolkit/setup-bun@a9b5747568c5c53f2011d686212afcd21802621d # v1.2.4
+      - name: Install Ruby dependencies
+        run: bundle install
       - name: Build PDF
         run: bun run pdf
       - name: Upload distribution artifacts

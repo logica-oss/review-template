@@ -1,5 +1,13 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["dist/**", ".agents/**"],
+  "ignorePatterns": [
+    "dist/**",
+    ".agents/skills/slopless",
+    ".agents/skills/stop-slop/",
+    ".agents/skills/yomiyasu/",
+    ".claude/skills/slopless",
+    ".claude/skills/stop-slop/",
+    ".claude/skills/yomiyasu/"
+  ],
   "sortImports": true
 }

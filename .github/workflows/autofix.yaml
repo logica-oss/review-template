@@ -29,6 +29,10 @@ jobs:
         run: bun run lint
       - name: Format
         run: bun run format
+      - name: Sync skills
+        run: bun run skills:sync -- --no-frozen-lockfile
+      - name: Update skills
+        run: bun run skills:update
       - name: Sync Agent Config
         uses: logica-oss/synac@18e9665aa5e12b0705225031dfb6f20d234ec48b # v0.2.0
         with:

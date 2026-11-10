@@ -9,7 +9,7 @@
         "@textlint-rule/textlint-rule-no-unmatched-pair": "2.0.4",
         "@types/js-yaml": "^4.0.9",
         "bun-types": "^1.4.4",
-        "concurrently": "10.0.6",
+        "concurrently": "10.0.7",
         "js-yaml": "5.5.0",
         "markdownlint-cli2": "0.24.0",
         "onchange": "7.1.0",
@@ -368,7 +368,7 @@
 
     "compromise": ["compromise@14.16.0", "", { "dependencies": { "efrt": "2.7.0", "grad-school": "0.0.5", "suffix-thumb": "5.0.2" } }, "sha512-4DFYl/Hl7sW4XWUDfx9S5vxqyYKpZDwwqrpXsQv5acdbVP+joKceIcIaLb0lhVWUpDBV0OnExk/o/dnYUwXnhQ=="],
 
-    "concurrently": ["concurrently@10.0.6", "", { "dependencies": { "chalk": "5.6.2", "rxjs": "7.8.2", "shell-quote": "1.12.0", "supports-color": "10.2.2", "tree-kill": "1.2.2", "yargs": "18.0.0" }, "bin": { "conc": "dist/bin/index.js", "concurrently": "dist/bin/index.js" } }, "sha512-qgICXXFp2/3nAebRLmxcINKEXM1mLK3ij/y31P02VTs/KIkddIeC05n73DxOXsXMB9LFSqNU1/na3lDlOhcbIw=="],
+    "concurrently": ["concurrently@10.0.7", "", { "dependencies": { "chalk": "5.6.2", "rxjs": "7.8.2", "shell-quote": "1.12.0", "supports-color": "10.2.2", "tree-kill": "1.2.2", "yargs": "18.0.0" }, "bin": { "conc": "dist/bin/index.js", "concurrently": "dist/bin/index.js" } }, "sha512-zMCeLhawVIj3SLbpg0/BWCdJl1wcBSpcHKbNrhaM01P3xAlEWcH30Lea2q+F4uGZ7YM0scDK0dgpWyn1uCJj6w=="],
 
     "cross-spawn": ["cross-spawn@7.0.6", "", { "dependencies": { "path-key": "^3.1.0", "shebang-command": "^2.0.0", "which": "^2.0.1" } }, "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="],
 

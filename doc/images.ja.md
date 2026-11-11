@@ -7,11 +7,24 @@
 `articles/images/<章ID>/` に置きます。他の章との名前衝突を避けるため、直下には置かないでください。
 
 ```text
-articles/images/nanakusa/fig1.png   ← chapters/nanakusa.md 用
+articles/images/02-nanakusa/fig1.png   ← chapters/02-nanakusa.md 用
 ```
 
-- `<章ID>` は章ファイル名から拡張子を除いたものです。`nanakusa.md` なら `nanakusa` です。
+- `<章ID>` は章ファイル名から拡張子を除いたものです。`02-nanakusa.md` なら `02-nanakusa` です。
 - 参照するときはサブディレクトリ名を書きません。Re:VIEW が章IDのディレクトリを自動で探します。
+
+## 印刷版と電子版で画像を分ける
+
+印刷版をモノクロ、電子版をフルカラーにする運用では、`articles/images-ebook/` に電子版用の画像を同じ章ID構成で置き、`articles/config-ebook.yml` で次の行を有効にします。
+
+```yaml
+imagedir: images-ebook
+```
+
+```text
+articles/images/02-nanakusa/fig1.png          ← 印刷版（モノクロ）
+articles/images-ebook/02-nanakusa/fig1.png   ← 電子版（フルカラー）
+```
 
 ## 参照の書き方
 
@@ -29,7 +42,7 @@ Markdown（`.md`）:
 ```
 
 - Markdown は [pandoc2review](https://github.com/kmuto/pandoc2review) で Re:VIEW に変換されます。`images/fig1.png` のファイル名から ID `fig1` が作られます。
-- `.md` の章も `catalog.yml` には拡張子 `.re` で登録します。例: `nanakusa.md` → `nanakusa.re`。
+- `.md` の章も `catalog.yml` には拡張子 `.re` で登録します。例: `02-nanakusa.md` → `02-nanakusa.re`。
 
 ## 使える拡張子
 

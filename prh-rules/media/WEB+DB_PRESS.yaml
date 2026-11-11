@@ -653,7 +653,7 @@ rules:
       - 取り敢えず
     expected: とりあえず
   - pattern: /([^有])無([かくいけし])/
-    expected: $1な$1
+    expected: $1な$2
   - pattern: /尚([^早徳])/
     expected: なお$1
   - pattern:
@@ -718,7 +718,7 @@ rules:
     expected: ふせん
   - pattern: 殆ど
     expected: ほとんど
-  - pattern: 正に
+  - pattern: /(?<![一-龠々])正に/
     expected: まさに
   - pattern:
       - 益々
@@ -1055,12 +1055,12 @@ rules:
       - 元々
       - 本々
     expected: もともと
-  - pattern: /基([^数準盤板底礎本])/
+  - pattern: /基([^数準盤板底礎本づ])/
     expected: もと$1
   - pattern: /([^追])及び/
     expected: $1および
-  - pattern: した上
-    expected: したうえ
+  - pattern: /した上([でに])/
+    expected: したうえ$1
   - pattern: その上
     expected: そのうえ
   - pattern: 始めとする
@@ -1095,7 +1095,7 @@ rules:
     expected: 汚$1
   - pattern: /果([さしすせそ])/
     expected: 果た$1
-  - pattern: /([^排人])他([^ァ-ヶ社者人方])/
+  - pattern: /([^排人の])他([^ァ-ヶ社者人方団のに])/
     expected: $1ほか$2
   - pattern: 後ほど
     expected: のちほど
@@ -2229,7 +2229,7 @@ rules:
   - expected: マネージャー$1
     pattern: /マネージャ([^ー])/
   - expected: メンテナー$1
-    pattern: /メンテナ([^ー])/
+    pattern: /メンテナ([^ー])(?!ス)/
   - expected: メンバー
     # 人間の意味では「メンバー」、変数などは「メンバ」
     pattern: /メンバ(?!ー)/
@@ -2303,7 +2303,7 @@ rules:
   - expected: Apple
     pattern: /\bApple\b/i
   - expected: APT
-    pattern: /\bAPT\b/i
+    pattern: /\b(?:Apt|ApT|aPT|aPt|APt|apT)\b/
   - expected: ASP.NET
     pattern: /ASP \.NET/
   - expected: Backbone.js
@@ -3018,4 +3018,4 @@ rules:
   - expected: $1の
     pattern: /([^も])のの/
   - expected: は
-    pattern: /はは/
+    pattern: /はは(?!じ)/

@@ -1,1 +1,8 @@
 % for user-defined macro
+% Replace NOTE-style blocks (note/memo/tip/info/warning/important/caution/notice)
+% with a breakable tcolorbox base.
+% The default reviewminicolumn (ascmac screen environment) is not splittable,
+% so long blocks with code listings are pushed to the next page with blank pages.
+\renewenvironment{reviewminicolumn}{%
+  \vspace{1.5zw}\begin{tcolorbox}[colback=white,breakable,enhanced jigsaw,before upper={\parindent1zw}]}{%
+  \end{tcolorbox}\vspace{2zw}}

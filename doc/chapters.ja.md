@@ -24,20 +24,20 @@
 
 ```yaml
 PREDEF:
-  - preface.re
+  - 00-preface.re
 
 CHAPS:
-  - article.re
+  - 01-article.re
 
 APPENDIX:
 
 POSTDEF:
-  - afterword.re
+  - 99-afterword.re
 ```
 
 ## 新しい章の追加手順
 
-1. `articles/chapters/<名前>.re` か `articles/chapters/<名前>.md` を作ります。
+1. `articles/chapters/<番号>-<名前>.re` か `articles/chapters/<番号>-<名前>.md` を作ります。
 2. `articles/catalog.yml` の該当区分にファイル名を追記します。
 3. `bun run pdf` などでビルドして確認します。
 
@@ -45,8 +45,8 @@ POSTDEF:
 
 ```yaml
 CHAPS:
-  - article.re # chapters/article.re
-  - nanakusa.re # chapters/nanakusa.md
+  - 01-article.re # chapters/01-article.re
+  - 02-nanakusa.re # chapters/02-nanakusa.md
 ```
 
 ## 章ID
@@ -74,3 +74,4 @@ CHAPS:
 
 - ファイル名とIDには ASCII のみを使います。日本語や空白は避けてください。
 - ファイル名は重複させないでください。
+- 章ファイル名の先頭には出力順を示す2桁番号を付けます（`00-` は前付け、`99-` は後付けの慣例）。番号付きの名前がそのまま章IDになり、画像探索や他章参照に使われます。

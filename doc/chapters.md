@@ -24,20 +24,20 @@ The template default is as follows.
 
 ```yaml
 PREDEF:
-  - preface.re
+  - 00-preface.re
 
 CHAPS:
-  - article.re
+  - 01-article.re
 
 APPENDIX:
 
 POSTDEF:
-  - afterword.re
+  - 99-afterword.re
 ```
 
 ## Adding a New Chapter
 
-1. Create `articles/chapters/<name>.re` or `articles/chapters/<name>.md`.
+1. Create `articles/chapters/<number>-<name>.re` or `articles/chapters/<number>-<name>.md`.
 2. Add the file name to the matching section in `articles/catalog.yml`.
 3. Build with `bun run pdf` or similar to verify.
 
@@ -45,8 +45,8 @@ Register `.md` chapters in `catalog.yml` with the `.re` extension.
 
 ```yaml
 CHAPS:
-  - article.re # chapters/article.re
-  - nanakusa.re # chapters/nanakusa.md
+  - 01-article.re # chapters/01-article.re
+  - 02-nanakusa.re # chapters/02-nanakusa.md
 ```
 
 ## Chapter ID
@@ -74,3 +74,4 @@ See `catalog.md` for details.
 
 - Use ASCII only for file names and IDs. Avoid Japanese characters and spaces.
 - Do not duplicate file names.
+- Prefix chapter file names with a two-digit output number (`00-` for frontmatter, `99-` for backmatter by convention). The numbered name becomes the chapter ID used for image lookup and cross-chapter references.

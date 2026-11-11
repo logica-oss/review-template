@@ -26,6 +26,10 @@ articles/images/02-nanakusa/fig1.png          ← 印刷版（モノクロ）
 articles/images-ebook/02-nanakusa/fig1.png   ← 電子版（フルカラー）
 ```
 
+## 表紙画像
+
+印刷版は表紙をPDFに組み込まず、表紙源（`cover.psd` など）を `articles/images/` に置いて別ファイルで入稿します。電子版は表紙・裏表紙をPDFに組み込みます。`articles/images-ebook/` 直下に `cover.png` と `backcover.png` を置き、`articles/config-ebook.yml` の表紙例を有効にします。
+
 ## 参照の書き方
 
 Re:VIEW（`.re`）:

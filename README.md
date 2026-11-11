@@ -110,12 +110,12 @@ REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
   - 印刷用に、トンボ、デジタルトンボを設置
   - いくつかの同人誌印刷所で要求事項となっているノドへの隠しノンブル、大扉からのアラビア数字通し
   - ハイパーリンクは無効化
-  - 表紙 (cover) は無視
+  - 表紙 (cover) は無視。表紙源（`cover.psd` など）を `articles/images/` に置いて別ファイルで入稿
 - 電子版
   - 電子配布用に、仕上がり紙面サイズ
   - 大扉からのアラビア数字通し
   - ハイパーリンク有効
-  - 表紙 (cover) は中央合わせで配置
+  - 表紙 (cover) は中央合わせで配置。`articles/images-ebook/cover.png` と `backcover.png` を組み込み
 
 ## 権利
 

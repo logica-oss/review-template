@@ -130,6 +130,7 @@ toc: true
 #
 # 表紙に配置し、書籍の影絵にも利用する画像ファイル。省略した場合はnull (画像を使わない)。画像ディレクトリ内に置いてもディレクトリ名は不要(例: cover.jpg)
 # PDFMaker 固有の表紙設定は pdfmaker セクション内で上書き可能
+# 印刷版は表紙を組み込まず、表紙源（cover.psd など）を別ファイルで入稿する。電子版の表紙は config-ebook.yml で設定する。
 # coverimage: cover.png
 #
 # 表紙の後に大扉ページを作成するか。省略した場合はtrue (作成する)
@@ -510,5 +511,5 @@ techbooster:
   # 表紙および裏表紙を実寸ではなく仕上がりサイズにリサイズするか
   # texdocumentclassでcover_fit_page=trueを付けるのと同じ
   # cover_fit_page: true
-  # 裏表紙画像指定。画像はimages/から探索される
+  # 裏表紙画像指定。imagedir（電子版では images-ebook）から探索される
   # backcoverimage: backcover.jpg

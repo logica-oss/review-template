@@ -21,7 +21,15 @@
 require 'fileutils'
 require 'rake/clean'
 
-BOOK = ENV['REVIEW_BOOK'] || 'ReVIEW-Template'
+# The book name is resolved by scripts/build.ts and passed via REVIEW_BOOK.
+# Rake intentionally does no YAML parsing here.
+# Direct `rake` invocation without REVIEW_BOOK fails fast to avoid
+# bookname mismatch leaving artifacts in articles/.
+BOOK = ENV['REVIEW_BOOK']
+if BOOK.nil? || BOOK.strip.empty?
+  abort 'REVIEW_BOOK is not set. Use `bun run pdf` instead of calling rake directly.'
+end
+BOOK = BOOK.strip
 BOOK_PDF = BOOK + '.pdf'
 BOOK_EPUB = BOOK + '.epub'
 CONFIG_FILE = ENV['REVIEW_CONFIG_FILE'] || 'config.yml'

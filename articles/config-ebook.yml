@@ -11,6 +11,15 @@ inherit: ["config.yml"]
 # 印刷版をモノクロ、電子版をフルカラーにする運用では次の行を有効にする。
 imagedir: images-ebook
 
+# 電子版PDFに表紙・裏表紙を組み込む場合の例。
+# 印刷版は表紙を組み込まず、表紙源（cover.psd など）を別ファイルで入稿する。
+# 電子版の表紙画像は imagedir（上記）から探索される。
+# coverimage: cover.png
+#
+# techbooster:
+#   cover_fit_page: true
+#   backcoverimage: backcover.png
+
 # 電子版を別のファイル名にしたい場合
 bookname: ReVIEW-Template-ebook
 

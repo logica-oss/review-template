@@ -41,6 +41,12 @@ rules:
       - つけ加
       - つけくわ
     expected: 付け加
+  - pattern:
+      - 箇月
+      - か月
+      - 個月
+      - カ月
+    expected: ヵ月
   - pattern: つけた
     expected: 付け足
   - pattern: 関連づけ
@@ -64,10 +70,9 @@ rules:
   - pattern: 思いつく
     expected: 思い付く
   - pattern:
-      - 1つ1つ
       - 一つひとつ
       - ひとつひとつ
-    expected: 一つ一つ
+    expected: 1つ1つ
   - pattern:
       - 一人ひとり
       - ひとりひとり
@@ -214,7 +219,7 @@ rules:
     expected: もう一度
   - pattern: もう1つ
     expected: もう一つ
-  - pattern: 1つは
+  - pattern: /(?<!1つ)1つは/
     expected: 一つは
   - pattern: 一目了然
     expected: 一目瞭然
@@ -226,11 +231,6 @@ rules:
     expected: 一種
   - pattern: いっしょ
     expected: 一緒
-  - pattern:
-      - ひととおり
-      - ひと通り
-      - 一とおり
-    expected: 一通り
   - pattern: 1度
     expected: 一度
   - pattern: 1部
@@ -253,7 +253,6 @@ rules:
       - 箇月
       - か月
       - 個月
-      - ケ月
       - カ月
     expected: ヵ月
   - pattern:
@@ -270,13 +269,6 @@ rules:
     expected: ヵ所
   - pattern: 個所
     expected: 箇所
-  - pattern:
-      - いちから
-      - 1から
-      - 一から
-      - イチから
-      - 0から
-    expected: ゼロから
   - pattern: 曖昧
     expected: あいまい
   - pattern: 敢えて
@@ -469,10 +461,6 @@ rules:
     expected: しかた
   - pattern: /([^正率垂安素愚])直に/
     expected: $1じかに
-  - pattern: /仕組([^み])/
-    expected: しくみ$1
-  - pattern: 仕組み
-    expected: しくみ
   - pattern: しし
     expected: し
   - pattern: しだい
@@ -653,7 +641,7 @@ rules:
       - 取り敢えず
     expected: とりあえず
   - pattern: /([^有])無([かくいけし])/
-    expected: $1な$1
+    expected: $1な$2
   - pattern: /尚([^早徳])/
     expected: なお$1
   - pattern:
@@ -718,7 +706,7 @@ rules:
     expected: ふせん
   - pattern: 殆ど
     expected: ほとんど
-  - pattern: 正に
+  - pattern: /(?<![一-龠々])正に/
     expected: まさに
   - pattern:
       - 益々
@@ -763,8 +751,6 @@ rules:
     expected: もちろん
   - pattern: 勿体な
     expected: もったいな
-  - pattern: もっとも
-    expected: 最も
   - pattern: 尤も
     expected: もっとも
   - pattern: /貰([わいうえおっ])/
@@ -962,8 +948,6 @@ rules:
     expected: 言えない
   - pattern: いえなく
     expected: 言えなく
-  - pattern: いえる
-    expected: 言える
   - pattern: いわれる
     expected: 言われる
   - pattern:
@@ -1055,26 +1039,22 @@ rules:
       - 元々
       - 本々
     expected: もともと
-  - pattern: /基([^数準盤板底礎本])/
+  - pattern: /基([^数準盤板底礎本づ])/
     expected: もと$1
   - pattern: /([^追])及び/
     expected: $1および
-  - pattern: した上
-    expected: したうえ
+  - pattern: /した上([でに])/
+    expected: したうえ$1
   - pattern: その上
     expected: そのうえ
   - pattern: 始めとする
     expected: はじめとする
   - pattern: 始めとした
     expected: はじめとした
-  - pattern: はじめて
-    expected: 初めて
   - pattern: はじめた
     expected: 始めた
   - pattern: はじま
     expected: 始ま
-  - pattern: はじめ
-    expected: 始め
   - pattern: かたまり
     expected: 塊
   - pattern: やりかた
@@ -1095,7 +1075,7 @@ rules:
     expected: 汚$1
   - pattern: /果([さしすせそ])/
     expected: 果た$1
-  - pattern: /([^排人])他([^ァ-ヶ社者人方])/
+  - pattern: /([^排人の])他([^ァ-ヶ社者人方団のに])/
     expected: $1ほか$2
   - pattern: 後ほど
     expected: のちほど
@@ -2229,7 +2209,7 @@ rules:
   - expected: マネージャー$1
     pattern: /マネージャ([^ー])/
   - expected: メンテナー$1
-    pattern: /メンテナ([^ー])/
+    pattern: /メンテナ([^ー])(?!ス)/
   - expected: メンバー
     # 人間の意味では「メンバー」、変数などは「メンバ」
     pattern: /メンバ(?!ー)/
@@ -2303,7 +2283,7 @@ rules:
   - expected: Apple
     pattern: /\bApple\b/i
   - expected: APT
-    pattern: /\bAPT\b/i
+    pattern: /\b(?:Apt|ApT|aPT|aPt|APt|apT)\b/
   - expected: ASP.NET
     pattern: /ASP \.NET/
   - expected: Backbone.js
@@ -3018,4 +2998,4 @@ rules:
   - expected: $1の
     pattern: /([^も])のの/
   - expected: は
-    pattern: /はは/
+    pattern: /はは(?!じ)/

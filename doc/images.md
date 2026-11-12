@@ -28,7 +28,7 @@ articles/images-ebook/02-nanakusa/fig1.png   ← ebook (full color)
 
 ## Cover images
 
-For print, do not embed the cover in the PDF. Place the cover source (such as `cover.psd`) under `articles/images/` and submit it as a separate file. For ebooks, embed the front and back covers in the PDF. Place `cover.png` and `backcover.png` directly under `articles/images-ebook/` and enable the cover example in `articles/config-ebook.yml`.
+For print, do not embed the cover in the PDF. Place the cover source (such as `cover.psd`) under `articles/images/` and submit it as a separate file. For ebooks, embed the front and back covers in the PDF. Enable `imagedir: images-ebook` and the cover example in `articles/config-ebook.yml`, and place `cover.png` and `backcover.png` directly under `articles/images-ebook/`.
 
 ## How to Reference
 

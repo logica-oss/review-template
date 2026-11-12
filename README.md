@@ -115,7 +115,8 @@ REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
   - 電子配布用に、仕上がり紙面サイズ
   - 大扉からのアラビア数字通し
   - ハイパーリンク有効
-  - 表紙 (cover) は中央合わせで配置。`articles/images-ebook/cover.png` と `backcover.png` を組み込み
+  - 表紙 (cover) は中央合わせで配置
+    - `articles/config-ebook.yml` の表紙例を有効にした場合、`articles/images-ebook/cover.png` と `backcover.png` を組み込み
 
 ## 権利
 

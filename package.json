@@ -14,7 +14,7 @@
     "dev": "bun run web && bun -b concurrently -k -n watch,serve \"bun run dev:watch\" \"bun run dev:serve\"",
     "dev:watch": "bun -b onchange \"articles/chapters/**/*\" -- bun run web",
     "dev:serve": "bun -b vite dist/webroot --port ${PORT:-8000} --strictPort",
-    "pdf:docker": "docker run -t --rm -v \"$(pwd)\":/book vvakame/review:latest /bin/bash -ci \"cd /book && bundle install && REVIEW_BOOK=${REVIEW_BOOK:-$(ruby -ryaml -e 'puts YAML.load_file(\"articles/config.yml\")[\"bookname\"]')} REVIEW_CONFIG_FILE=${REVIEW_CONFIG_FILE:-config.yml} bash -c 'cd articles && bundle exec rake pdf'\"",
+    "pdf:docker": "docker run -t --rm -v \"$(pwd)\":/book -v \"$(pwd)/scripts/docker-entrypoint.sh\":/entrypoint.sh:ro -e REVIEW_BOOK -e REVIEW_CONFIG_FILE -e REVIEW_CATALOG_FILE -e REVIEW_WEBROOT -e REVIEW_DISTDIR -e REVIEW_PDF_OPTIONS -e REVIEW_EPUB_OPTIONS -e REVIEW_WEB_OPTIONS -e REVIEW_IDGXML_OPTIONS -e REVIEW_TEXT_OPTIONS vvakame/review:latest /entrypoint.sh pdf",
     "pdf": "bun scripts/build.ts \"bundle exec rake pdf\"",
     "md": "bun scripts/build.ts \"bundle exec review-compile --target=markdown\"",
     "text": "bun scripts/build.ts \"bundle exec rake text\"",

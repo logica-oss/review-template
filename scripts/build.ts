@@ -30,10 +30,13 @@ const loadRawConfig = async (configFile: string): Promise<Record<string, unknown
     return record;
   }
 
+  const baseDir = path.dirname(configFile);
   const parents = inherit.filter(
     (parent): parent is string => typeof parent === "string" && parent.trim() !== "",
   );
-  const resolved = await Promise.all(parents.map((parent) => loadRawConfig(parent.trim())));
+  const resolved = await Promise.all(
+    parents.map((parent) => loadRawConfig(path.join(baseDir, parent.trim()))),
+  );
   const merged: Record<string, unknown> = {};
   for (const item of resolved) {
     Object.assign(merged, item);

@@ -23,3 +23,5 @@ reviews:
       instructions: "Accept by design (do not report): Markdown intake via pandoc2review is deprecated in this template. Do not request inheritance or config resolution support for this task."
     - path: "scripts/build.ts"
       instructions: "Accept by design (do not report): maker-specific bookname overrides are out of scope. REVIEW_BOOK always uses the top-level bookname; do not request maker-aware resolution."
+    - path: "articles/config*.yml"
+      instructions: "Accept by design (do not report): commented examples in config.yml and config-ebook.yml are intentional. This template documents usage with comments and unused options; do not request moving them to README."

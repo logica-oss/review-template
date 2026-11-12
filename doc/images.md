@@ -26,6 +26,8 @@ articles/images/02-nanakusa/fig1.png          ← print (monochrome)
 articles/images-ebook/02-nanakusa/fig1.png   ← ebook (full color)
 ```
 
+There is no fallback when switching `imagedir`. Mirror chapter images under `articles/images-ebook/` with the same chapter-ID layout.
+
 ## Cover images
 
 For print, do not embed the cover in the PDF. Place the cover source (such as `cover.psd`) under `articles/images/` and submit it as a separate file. For ebooks, embed the front and back covers in the PDF. Enable `imagedir: images-ebook` and the cover example in `articles/config-ebook.yml`, and place `cover.png` and `backcover.png` directly under `articles/images-ebook/`.

@@ -26,6 +26,8 @@ articles/images/02-nanakusa/fig1.png          ← 印刷版（モノクロ）
 articles/images-ebook/02-nanakusa/fig1.png   ← 電子版（フルカラー）
 ```
 
+`imagedir` 切替時にフォールバックはありません。章画像を使う場合は同じ章ID構成で `articles/images-ebook/` にミラーしてください。
+
 ## 表紙画像
 
 印刷版は表紙をPDFに組み込まず、表紙源（`cover.psd` など）を `articles/images/` に置いて別ファイルで入稿します。電子版は表紙・裏表紙をPDFに組み込みます。`articles/config-ebook.yml` で `imagedir: images-ebook` と表紙例を有効にし、`articles/images-ebook/` 直下に `cover.png` と `backcover.png` を置きます。

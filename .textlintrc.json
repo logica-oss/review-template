@@ -12,7 +12,11 @@
       "no-exclamation-question-mark": false
     },
     "prh": { "rulePaths": ["./prh.yaml"] },
-    "ja-hiraku": true,
+    "ja-hiraku": {
+      "keishikimeishi": { "方": false, "中": false, "上": false },
+      "other-doushi": { "分かる": false, "分かり": false },
+      "hojodoushi": { "上げ": false, "上げる": false }
+    },
     "no-empty-section": true,
     "en-max-word-count": { "max": 50 },
     "max-appearence-count-of-words": { "max": 10 },

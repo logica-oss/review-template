@@ -473,6 +473,26 @@ pdfmaker:
   #     options: "colback=black!5!white"
   #     options_with_caption: "colbacktitle=black!25!white"
   #
+  # NOTE系囲みをページ跨ぎ可能な squarebox (tcolorbox) にする。
+  # review-custom.sty の reviewminicolumn 差し替えと対になる設定。
+  boxsetting:
+    note:
+      style: squarebox
+    memo:
+      style: squarebox
+    tip:
+      style: squarebox
+    info:
+      style: squarebox
+    warning:
+      style: squarebox
+    important:
+      style: squarebox
+    caution:
+      style: squarebox
+    notice:
+      style: squarebox
+  #
   # pdfmaker:階層を使うものはここまで
 
 # 以下のパラメータを有効にするときには、

@@ -169,6 +169,35 @@ div.column ol {
   list-style-position: inside;
 }
 
+/* Note Block */
+div.note,
+div.memo,
+div.tip,
+div.info,
+div.warning,
+div.important,
+div.caution,
+div.notice {
+  margin: 2em 0 2em 2em;
+  padding: 0.3em 1em;
+  border: 1px #aaa solid;
+  -webkit-border-radius: 0.7em;
+}
+div.note p.caption,
+div.memo p.caption,
+div.tip p.caption,
+div.info p.caption,
+div.warning p.caption,
+div.important p.caption,
+div.caution p.caption,
+div.notice p.caption {
+  margin: 0.7em 0;
+  color: #666;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-indent: 0;
+}
+
 /* Code Block */
 /*
 ※シンプルにできるかも

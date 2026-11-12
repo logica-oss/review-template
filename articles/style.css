@@ -58,6 +58,35 @@ div.column {
   }
 }
 
+/* NOTE系囲み (note/memo/tip/info/warning/important/caution/notice) */
+div.note,
+div.memo,
+div.tip,
+div.info,
+div.warning,
+div.important,
+div.caution,
+div.notice {
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  padding: 0.3em 1em;
+  margin-top: var(--paragraph-margin-bottom);
+  margin-bottom: var(--paragraph-margin-bottom);
+}
+div.note p.caption,
+div.memo p.caption,
+div.tip p.caption,
+div.info p.caption,
+div.warning p.caption,
+div.important p.caption,
+div.caution p.caption,
+div.notice p.caption {
+  font-size: 0.875em;
+  font-weight: bold;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 /* リード文 */
 div.lead {
   font-size: var(--font-size);

@@ -219,7 +219,7 @@ rules:
     expected: もう一度
   - pattern: もう1つ
     expected: もう一つ
-  - pattern: 1つは
+  - pattern: /(?<!1つ)1つは/
     expected: 一つは
   - pattern: 一目了然
     expected: 一目瞭然
@@ -231,11 +231,6 @@ rules:
     expected: 一種
   - pattern: いっしょ
     expected: 一緒
-  - pattern:
-      - ひととおり
-      - ひと通り
-      - 一とおり
-    expected: ひととおり
   - pattern: 1度
     expected: 一度
   - pattern: 1部

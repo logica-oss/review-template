@@ -41,6 +41,12 @@ rules:
       - つけ加
       - つけくわ
     expected: 付け加
+  - pattern:
+      - 箇月
+      - か月
+      - 個月
+      - カ月
+    expected: ヵ月
   - pattern: つけた
     expected: 付け足
   - pattern: 関連づけ
@@ -64,10 +70,9 @@ rules:
   - pattern: 思いつく
     expected: 思い付く
   - pattern:
-      - 1つ1つ
       - 一つひとつ
       - ひとつひとつ
-    expected: 一つ一つ
+    expected: 1つ1つ
   - pattern:
       - 一人ひとり
       - ひとりひとり
@@ -230,7 +235,7 @@ rules:
       - ひととおり
       - ひと通り
       - 一とおり
-    expected: 一通り
+    expected: ひととおり
   - pattern: 1度
     expected: 一度
   - pattern: 1部
@@ -253,9 +258,10 @@ rules:
       - 箇月
       - か月
       - 個月
-      - ケ月
       - カ月
     expected: ヵ月
+  - pattern: /(?<![\d.])(?:1|0)から/
+    expected: ゼロから
   - pattern:
       - 箇国
       - か国
@@ -272,10 +278,10 @@ rules:
     expected: 箇所
   - pattern:
       - いちから
-      - 1から
       - 一から
       - イチから
-      - 0から
+    expected: ゼロから
+  - pattern: /(?<![\d.])(?:1|0)から/
     expected: ゼロから
   - pattern: 曖昧
     expected: あいまい
@@ -469,10 +475,6 @@ rules:
     expected: しかた
   - pattern: /([^正率垂安素愚])直に/
     expected: $1じかに
-  - pattern: /仕組([^み])/
-    expected: しくみ$1
-  - pattern: 仕組み
-    expected: しくみ
   - pattern: しし
     expected: し
   - pattern: しだい
@@ -763,8 +765,6 @@ rules:
     expected: もちろん
   - pattern: 勿体な
     expected: もったいな
-  - pattern: もっとも
-    expected: 最も
   - pattern: 尤も
     expected: もっとも
   - pattern: /貰([わいうえおっ])/
@@ -962,8 +962,6 @@ rules:
     expected: 言えない
   - pattern: いえなく
     expected: 言えなく
-  - pattern: いえる
-    expected: 言える
   - pattern: いわれる
     expected: 言われる
   - pattern:
@@ -1067,14 +1065,10 @@ rules:
     expected: はじめとする
   - pattern: 始めとした
     expected: はじめとした
-  - pattern: はじめて
-    expected: 初めて
   - pattern: はじめた
     expected: 始めた
   - pattern: はじま
     expected: 始ま
-  - pattern: はじめ
-    expected: 始め
   - pattern: かたまり
     expected: 塊
   - pattern: やりかた

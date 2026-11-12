@@ -19,3 +19,7 @@ reviews:
   path_instructions:
     - path: ".github/workflows/autofix.yaml"
       instructions: "Accept by design (do not report): the synac step intentionally omits the version input to always use the latest release; do not suggest pinning a version."
+    - path: "articles/lib/tasks/z01_pandoc2review.rake"
+      instructions: "Accept by design (do not report): Markdown intake via pandoc2review is deprecated in this template. Do not request inheritance or config resolution support for this task."
+    - path: "scripts/build.ts"
+      instructions: "Accept by design (do not report): maker-specific bookname overrides are out of scope. REVIEW_BOOK always uses the top-level bookname; do not request maker-aware resolution."

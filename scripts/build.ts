@@ -72,6 +72,30 @@ const preProc = async (contentDir: string): Promise<void> => {
   await runCommand(`bundle exec review-preproc -r --tabwidth=2 ${contentDir}/*.re`);
 };
 
+const targetsForCommand = (command: string, bookName: string | undefined): string[] | undefined => {
+  if (bookName === undefined) {
+    return undefined;
+  }
+
+  if (/\brake\s+pdf\b/.test(command)) {
+    return [path.join(DIST_DIR, `${bookName}.pdf`)];
+  }
+  if (/\brake\s+epub\b/.test(command)) {
+    return [path.join(DIST_DIR, `${bookName}.epub`)];
+  }
+  if (/\brake\s+web\b/.test(command)) {
+    return [path.join(DIST_DIR, "webroot")];
+  }
+  if (/\brake\s+text\b/.test(command)) {
+    return [path.join(DIST_DIR, `${bookName}-text`)];
+  }
+  if (/\brake\s+idgxml\b/.test(command)) {
+    return [path.join(DIST_DIR, `${bookName}-idgxml`)];
+  }
+
+  return undefined;
+};
+
 const main = async (): Promise<void> => {
   const command = process.argv.slice(2).join(" ");
   if (command.length === 0) {
@@ -82,12 +106,18 @@ const main = async (): Promise<void> => {
   }
 
   const config = await loadBookConfig();
-  await rm(DIST_DIR, { recursive: true, force: true });
-  await preProc(config.contentDir ?? ".");
-
   if (config.bookName !== undefined) {
     process.env["REVIEW_BOOK"] = config.bookName;
   }
+
+  const targets = targetsForCommand(command, config.bookName);
+  if (targets !== undefined) {
+    await Promise.all(targets.map((target) => rm(target, { recursive: true, force: true })));
+  } else {
+    await rm(DIST_DIR, { recursive: true, force: true });
+  }
+  await preProc(config.contentDir ?? ".");
+
   await runCommand(command);
 };
 

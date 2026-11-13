@@ -36,7 +36,7 @@ rules:
 
   # 開き
   - expected: と$1いえ$2
-    pattern: /と(も)?言え(る)/
+    pattern: /と(も)?言え(る|ます|ない)/
     prh: 補助的な「といえる」はひらがなで書きます
   - expected: いう
     pattern: 言う

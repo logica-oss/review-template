@@ -9,10 +9,10 @@ inherit: ["config.yml"]
 
 # 印刷版と電子版で画像を分ける場合の例。
 # 印刷版をモノクロ、電子版をフルカラーにする運用では次の行を有効にする。
-# imagedir: images-ebook
+imagedir: images-ebook
 
 # 電子版を別のファイル名にしたい場合
-# bookname: ReVIEW-Template-ebook
+bookname: ReVIEW-Template-ebook
 
 # A5の設定(9pt 38文字×37行) - 電子版
 texdocumentclass:

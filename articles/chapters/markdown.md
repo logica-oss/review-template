@@ -14,11 +14,11 @@ contentdir: _refiles
 
 ```yaml
 PREDEF:
-  - preface.re
+  - 00-preface.re
 
 CHAPS:
-  - article.re
-  - markdown.re
+  - 01-article.re
+  - 02-markdown.re
 
 APPENDIX:
 

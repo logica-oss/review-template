@@ -25,7 +25,7 @@ description: "Re:VIEW本の執筆開始時の初期設定をする。Use when st
 
 順序固定。各項目は `対象ファイル: フィールド` に対応する。
 
-1. `config.yml: bookname` — ファイル名になる書籍ID。ASCIIのみ。例: `"my-book"`。
+1. `config.yml: bookname` — ファイル名になる書籍ID。ASCIIのみ。例: `"my-book"`。回答を受けたら `config-ebook.yml: bookname` に `"<回答>-ebook"` を仮置きする。
 2. `config.yml: booktitle` — `name` (書名) と `file-as` (読み) を聞く。例: `name: "はじめてのRe:VIEW"`。
 3. `config.yml: aut` — 著者名と読み。複数可。例: `[{ name: "山田太郎", file-as: "やまだたろう" }]`。
 4. `config.yml: edt / pbl` — 編集者と出版社・発行所。不要なら空のままにする。テンプレート値 (`mhidaka` / `TechBooster`) を維持するか確認する。
@@ -33,8 +33,8 @@ description: "Re:VIEW本の執筆開始時の初期設定をする。Use when st
 6. `config.yml: date / history` — 刊行日 (`YYYY-M-D`) と版履歴の配列。例: `[["2026-6-1 初版第1刷"]]`。
 7. `config.yml: urnid / isbn` — 固有ID。ISBNがある場合のみ `isbn` を設定し、なければ `urnid` を書籍URLまたは既定値にする。
 8. `config.yml + config-ebook.yml: texdocumentclass` — 紙面設定。`A5・紙版` / `A5・電子版` / `B5・紙版` / `B5・電子版` から選ばせる。`config.yml` 側は `media=print`、`config-ebook.yml` 側は `media=ebook` の対応する定義を有効化する。
-9. `config-ebook.yml: bookname` — 電子版を別ファイル名にする場合のみ設定。不要なら継承のままにする。
-10. `catalog.yml: PREDEF / CHAPS / APPENDIX / POSTDEF` — 章立て。`articles/chapters/` の `.re` ファイル名を配列で聞く。初期値は `preface.re`、`article.re`、`afterword.re`。
+9. `config-ebook.yml: bookname` — 既定は `config.yml` の値に `-ebook` を付けた仮置き。別名が必要な場合のみ上書きし、不要な変更はしない。
+10. `catalog.yml: PREDEF / CHAPS / APPENDIX / POSTDEF` — 章立て。`articles/chapters/` の `.re` ファイル名を配列で聞く。初期値は `00-preface.re`、`01-article.re`、`99-afterword.re`。
 11. `locale.yml: column_head / columnname / memo_head / image / table / list` — 表記名。変更が必要な項目のみ上書きし、他は既定値のままにする。
 12. `config.yml: toc / titlepage / colophon` — 目次・大扉・奥付の有無。既定値 (`true`) でよいか最終確認する。
 

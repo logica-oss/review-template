@@ -6,10 +6,10 @@ Setting files, templates and production environment (e.g. `articles/sty/techboos
 When redistributing, retain copyright notices as required by the MIT License.
 
 Books generated with this template are not regarded as software under current Re:VIEW, and no license applies to the output itself.
-A thank-you note template is provided in `articles/chapters/afterword.re`.
+A thank-you note template is provided in `articles/chapters/99-afterword.re`.
 
 This template is derived from TechBooster `ReVIEW-Template`
-(see `articles/chapters/afterword.re` for the upstream URL).
+(see `articles/chapters/99-afterword.re` for the upstream URL).
 
 ## Third-party files in `articles/sty/`
 

@@ -7,11 +7,30 @@ This guide covers the image placement convention for multi-author books. For the
 Place images under `articles/images/<chapid>/`. Do not place them directly under `images/` to avoid name collisions with other chapters.
 
 ```text
-articles/images/nanakusa/fig1.png   ← for chapters/nanakusa.md
+articles/images/02-example/fig1.png   ← for chapters/02-example.md
 ```
 
-- `<chapid>` is the chapter file name without its extension. `nanakusa.md` becomes `nanakusa`.
+- `<chapid>` is the chapter file name without its extension. `02-example.md` becomes `02-example`.
 - Do not write the subdirectory name in references. Re:VIEW finds the chapter-ID directory automatically.
+
+## Separating print and ebook images
+
+To use monochrome images for print and full-color images for ebooks, place the ebook images under `articles/images-ebook/` with the same chapter-ID layout and enable the following line in `articles/config-ebook.yml`.
+
+```yaml
+imagedir: images-ebook
+```
+
+```text
+articles/images/02-example/fig1.png          ← print (monochrome)
+articles/images-ebook/02-example/fig1.png   ← ebook (full color)
+```
+
+Example ebook PDF build:
+
+```sh
+REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
+```
 
 ## How to Reference
 
@@ -29,7 +48,7 @@ Markdown (`.md`):
 ```
 
 - Markdown files are converted to Re:VIEW by [pandoc2review](https://github.com/kmuto/pandoc2review). The file name `images/fig1.png` becomes the ID `fig1`.
-- Register `.md` chapters in `catalog.yml` with the `.re` extension. Example: `nanakusa.md` → `nanakusa.re`.
+- Register `.md` chapters in `catalog.yml` with the `.re` extension. Example: `02-example.md` → `02-example.re`.
 
 ## Supported Extensions
 

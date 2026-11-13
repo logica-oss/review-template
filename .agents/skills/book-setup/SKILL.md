@@ -32,7 +32,7 @@ description: "Re:VIEW本の執筆開始時の初期設定をする。Use when st
 7. `config.yml: urnid / isbn` — 固有ID。ISBNがある場合のみ `isbn` を設定し、なければ `urnid` を書籍URLまたは既定値にする。
 8. `config.yml + config-ebook.yml: texdocumentclass` — 紙面設定。`A5・紙版` / `A5・電子版` / `B5・紙版` / `B5・電子版` から選ばせる。`config.yml` 側は `media=print`、`config-ebook.yml` 側は `media=ebook` の対応する定義を有効化する。
 9. `config-ebook.yml: bookname` — 電子版を別ファイル名にする場合のみ設定。不要なら継承のままにする。
-10. `catalog.yml: PREDEF / CHAPS / APPENDIX / POSTDEF` — 章立て。`articles/chapters/` の `.re` ファイル名を配列で聞く。初期値は `preface.re`、`article.re`、`afterword.re`。
+10. `catalog.yml: PREDEF / CHAPS / APPENDIX / POSTDEF` — 章立て。`articles/chapters/` の `.re` ファイル名を配列で聞く。初期値は `00-preface.re`、`01-article.re`、`99-afterword.re`。
 11. `locale.yml: column_head / columnname / memo_head / image / table / list` — 表記名。変更が必要な項目のみ上書きし、他は既定値のままにする。
 12. `config.yml: toc / titlepage / colophon` — 目次・大扉・奥付の有無。既定値 (`true`) でよいか最終確認する。
 

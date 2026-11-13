@@ -26,6 +26,12 @@ articles/images/02-nanakusa/fig1.png          ← 印刷版（モノクロ）
 articles/images-ebook/02-nanakusa/fig1.png   ← 電子版（フルカラー）
 ```
 
+電子版PDFのビルド例：
+
+```sh
+REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
+```
+
 ## 参照の書き方
 
 Re:VIEW（`.re`）:

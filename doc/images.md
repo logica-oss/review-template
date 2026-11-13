@@ -26,6 +26,12 @@ articles/images/02-nanakusa/fig1.png          ← print (monochrome)
 articles/images-ebook/02-nanakusa/fig1.png   ← ebook (full color)
 ```
 
+Example ebook PDF build:
+
+```sh
+REVIEW_CONFIG_FILE=config-ebook.yml bun run pdf
+```
+
 ## How to Reference
 
 Re:VIEW (`.re`):

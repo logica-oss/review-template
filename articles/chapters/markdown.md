@@ -18,7 +18,7 @@ PREDEF:
 
 CHAPS:
   - 01-article.re
-  - markdown.re
+  - 02-markdown.re
 
 APPENDIX:
 

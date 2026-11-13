@@ -46,15 +46,15 @@ POSTDEF:
 ```yaml
 CHAPS:
   - 01-article.re # chapters/01-article.re
-  - 02-nanakusa.re # chapters/02-nanakusa.md
+  - 02-example.re # chapters/02-example.md
 ```
 
 ## 章ID
 
-章IDは章ファイル名から拡張子を除いたものです。`nanakusa.md` なら `nanakusa` です。
+章IDは章ファイル名から拡張子を除いたものです。`02-example.md` なら `02-example` です。
 
 - 画像の探索（`images/<章ID>/`）に使います。詳しくは `images.ja.md` を参照してください。
-- 他章の図表参照（`@<img>{nanakusa|fig1}` など）に使います。詳しくは `format.ja.md` の「図」を参照してください。
+- 他章の図表参照（`@<img>{02-example|fig1}` など）に使います。詳しくは `format.ja.md` の「図」を参照してください。
 
 ## 部構成
 

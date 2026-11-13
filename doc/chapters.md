@@ -46,15 +46,15 @@ Register `.md` chapters in `catalog.yml` with the `.re` extension.
 ```yaml
 CHAPS:
   - 01-article.re # chapters/01-article.re
-  - 02-nanakusa.re # chapters/02-nanakusa.md
+  - 02-example.re # chapters/02-example.md
 ```
 
 ## Chapter ID
 
-The chapter ID is the chapter file name without its extension. `nanakusa.md` becomes `nanakusa`.
+The chapter ID is the chapter file name without its extension. `02-example.md` becomes `02-example`.
 
 - It is used for image lookup (`images/<chapid>/`). See `images.md` for details.
-- It is used for cross-chapter references (`@<img>{nanakusa|fig1}` and similar). See "Figure" in `format.md` for details.
+- It is used for cross-chapter references (`@<img>{02-example|fig1}` and similar). See "Figure" in `format.md` for details.
 
 ## Parts
 

@@ -84,7 +84,14 @@ const targetsForCommand = (command: string, bookName: string | undefined): strin
     return [path.join(DIST_DIR, `${bookName}.epub`)];
   }
   if (/\brake\s+web\b/.test(command)) {
-    return [path.join(DIST_DIR, "webroot")];
+    const distDirEnv = process.env["REVIEW_DISTDIR"];
+    const webRootEnv = process.env["REVIEW_WEBROOT"];
+    return [
+      path.join(
+        typeof distDirEnv === "string" && distDirEnv.trim() !== "" ? distDirEnv : DIST_DIR,
+        typeof webRootEnv === "string" && webRootEnv.trim() !== "" ? webRootEnv : "webroot",
+      ),
+    ];
   }
   if (/\brake\s+text\b/.test(command)) {
     return [path.join(DIST_DIR, `${bookName}-text`)];

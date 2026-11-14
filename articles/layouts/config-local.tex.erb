@@ -3,6 +3,7 @@
 \recls@coverfitpagetrue
 <%- end -%>
 <%- if @config['techbooster'] && @config['techbooster']['backcoverimage'] -%>
-\def\techbooster@coverimage{images/<%= @config['techbooster']['backcoverimage'] %>}
+\def\techbooster@coverimage{./<%= @config['imagedir'] || 'images' %>/<%= @config['techbooster']['backcoverimage'] %>}
+\def\techbooster@coverimagefallback{./images/<%= @config['techbooster']['backcoverimage'] %>}
 <%- end -%>
 \makeatother

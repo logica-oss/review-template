@@ -226,7 +226,9 @@
     \def\review@coverimageoption{width=\paperwidth,height=\paperheight}%
   \fi
   \def\reviewbackcovercont{%
-  \expandafter\includefullpagegraphicswithoutnmbl\expandafter[\review@coverimageoption]{\techbooster@coverimage}}%
+  \IfFileExists{\techbooster@coverimage}{%
+  \expandafter\includefullpagegraphicswithoutnmbl\expandafter[\review@coverimageoption]{\techbooster@coverimage}}{%
+  \expandafter\includefullpagegraphicswithoutnmbl\expandafter[\review@coverimageoption]{\techbooster@coverimagefallback}}}%
 \fi
 
 \makeatother

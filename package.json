@@ -50,7 +50,7 @@
     "textlint-rule-preset-ai-words-ja": "1.2.1",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "textlint-rule-prh": "6.1.1",
-    "vite": "8.3.7"
+    "vite": "8.3.8"
   },
   "overrides": {
     "glob@^13.0.6": "14.0.2",

@@ -16,7 +16,7 @@
         "oxfmt": "0.78.0",
         "oxlint": "1.93.0",
         "oxlint-tsgolint": "7.0.2007",
-        "skills": "1.8.1",
+        "skills": "1.9.0",
         "slopless": "0.2.42",
         "textlint": "16.0.0",
         "textlint-plugin-review": "0.4.1",
@@ -952,7 +952,7 @@
 
     "side-channel-weakmap": ["side-channel-weakmap@1.0.2", "", { "dependencies": { "call-bound": "^1.0.2", "es-errors": "^1.3.0", "get-intrinsic": "^1.2.5", "object-inspect": "^1.13.3", "side-channel-map": "^1.0.1" } }, "sha512-WPS/HvHQTYnHisLo9McqBHOJk2FkHO/tlpvldyrnem4aeQp4hai3gythswg6p01oSoTl58rcpiFAjF2br2Ak2A=="],
 
-    "skills": ["skills@1.8.1", "", { "dependencies": { "nostics": "^1.3.0", "tar": "^7.5.22", "yaml": "^2.9.1" }, "bin": { "skills": "bin/cli.mjs", "add-skill": "bin/cli.mjs" } }, "sha512-QK3wlZ5j8wcpLPUOXt7+1Gu1f9JKpv7lBpO0zmqKa5VBrt45/woVo8Max1x4wha3pCNafNHiiodYK6Xi/0alQQ=="],
+    "skills": ["skills@1.9.0", "", { "dependencies": { "nostics": "^1.3.0", "tar": "^7.5.22", "yaml": "^2.9.1" }, "bin": { "skills": "bin/cli.mjs", "add-skill": "bin/cli.mjs" } }, "sha512-8p27fa6SnpDLrGIpqbhNIHg8+uukR2lg/0qDoKPk85pU3/zyXiU67tEjvXHLrzybBefIAWpWZ2Oc+enlvSSVqg=="],
 
     "slash": ["slash@5.1.0", "", {}, "sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg=="],
 

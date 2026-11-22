@@ -3,7 +3,13 @@
 \recls@coverfitpagetrue
 <%- end -%>
 <%- if @config['techbooster'] && @config['techbooster']['backcoverimage'] -%>
-\def\techbooster@coverimage{./<%= @config['imagedir'] || 'images' %>/<%= @config['techbooster']['backcoverimage'] %>}
-\def\techbooster@coverimagefallback{./images/<%= @config['techbooster']['backcoverimage'] %>}
+<%-   raw = @config['techbooster']['backcoverimage'].to_s -%>
+<%-   dir = @config['imagedir'] || 'images' -%>
+<%-   primary = File.file?(File.join(@basedir, dir, raw)) ? raw : Dir[File.join(@basedir, dir, raw + '.*')].map { |f| File.basename(f) }.first || raw -%>
+<%-   fallback = File.file?(File.join(@basedir, 'images', raw)) ? raw : Dir[File.join(@basedir, 'images', raw + '.*')].map { |f| File.basename(f) }.first || raw -%>
+<%-   FileUtils.mkdir_p(File.join(@path, 'images')) if dir != 'images' rescue nil -%>
+<%-   FileUtils.cp(File.join(@basedir, 'images', fallback), File.join(@path, 'images', fallback)) if dir != 'images' && File.file?(File.join(@basedir, 'images', fallback)) rescue nil -%>
+\def\techbooster@coverimage{./<%= dir %>/<%= primary %>}
+\def\techbooster@coverimagefallback{./images/<%= fallback %>}
 <%- end -%>
 \makeatother

@@ -5,10 +5,23 @@
 <%- if @config['techbooster'] && @config['techbooster']['backcoverimage'] -%>
 <%-   raw = @config['techbooster']['backcoverimage'].to_s -%>
 <%-   dir = @config['imagedir'] || 'images' -%>
-<%-   primary = File.file?(File.join(@basedir, dir, raw)) ? raw : Dir[File.join(@basedir, dir, raw + '.*')].map { |f| File.basename(f) }.first || raw -%>
-<%-   fallback = File.file?(File.join(@basedir, 'images', raw)) ? raw : Dir[File.join(@basedir, 'images', raw + '.*')].map { |f| File.basename(f) }.first || raw -%>
-<%-   FileUtils.mkdir_p(File.join(@path, 'images')) if dir != 'images' rescue nil -%>
-<%-   FileUtils.cp(File.join(@basedir, 'images', fallback), File.join(@path, 'images', fallback)) if dir != 'images' && File.file?(File.join(@basedir, 'images', fallback)) rescue nil -%>
+<%-   resolve = lambda do |d, name| -%>
+<%-     cand = File.join(@basedir, d, name) -%>
+<%-     return name if File.file?(cand) -%>
+<%-     found = Dir[File.join(@basedir, d, name + '.*')].sort.first -%>
+<%-     found ? found.sub(File.join(@basedir, d) + '/', '') : nil -%>
+<%-   end -%>
+<%-   primary = resolve.call(dir, raw) || raw -%>
+<%-   fallback = resolve.call('images', raw) || raw -%>
+<%-   if dir != 'images' -%>
+<%-     begin -%>
+<%-       src = File.join(@basedir, 'images', fallback) -%>
+<%-       dst = File.join(@path, 'images', fallback) -%>
+<%-       FileUtils.mkdir_p(File.dirname(dst)) -%>
+<%-       FileUtils.cp(src, dst) if File.file?(src) && !File.file?(dst) -%>
+<%-     rescue -%>
+<%-     end -%>
+<%-   end -%>
 \def\techbooster@coverimage{./<%= dir %>/<%= primary %>}
 \def\techbooster@coverimagefallback{./images/<%= fallback %>}
 <%- end -%>

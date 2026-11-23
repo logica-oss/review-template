@@ -9,7 +9,8 @@
 <%-     exact = File.join(@basedir, search_dir, backcover) -%>
 <%-     return backcover if File.file?(exact) -%>
 <%-     escaped = backcover.gsub(/([*?\[\]{}])/) { |m| '\\' + m } -%>
-<%-     matched = Dir[File.join(@basedir, search_dir, escaped + '.*')].sort.first -%>
+<%-     allowed = %w[.png .gif .jpg .jpeg .svg .pdf .eps .ai .tif .tiff .psd] -%>
+<%-     matched = Dir[File.join(@basedir, search_dir, escaped + '.*')].select { |p| allowed.include?(File.extname(p).downcase) }.sort.first -%>
 <%-     next nil if matched.nil? -%>
 <%-     matched.sub(File.join(@basedir, search_dir, ''), '') -%>
 <%-   end -%>

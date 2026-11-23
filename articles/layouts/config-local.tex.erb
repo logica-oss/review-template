@@ -3,26 +3,26 @@
 \recls@coverfitpagetrue
 <%- end -%>
 <%- if @config['techbooster'] && @config['techbooster']['backcoverimage'] -%>
-<%-   raw = @config['techbooster']['backcoverimage'].to_s -%>
-<%-   dir = @config['imagedir'] || 'images' -%>
-<%-   resolve = lambda do |d, name| -%>
-<%-     cand = File.join(@basedir, d, name) -%>
-<%-     return name if File.file?(cand) -%>
-<%-     found = Dir[File.join(@basedir, d, name + '.*')].sort.first -%>
-<%-     found ? found.sub(File.join(@basedir, d) + '/', '') : nil -%>
+<%-   backcover = @config['techbooster']['backcoverimage'].to_s -%>
+<%-   imagedir = (@config['imagedir'] || 'images').to_s.chomp('/') -%>
+<%-   find_image = lambda do |search_dir| -%>
+<%-     exact = File.join(@basedir, search_dir, backcover) -%>
+<%-     return backcover if File.file?(exact) -%>
+<%-     matched = Dir[File.join(@basedir, search_dir, backcover + '.*')].sort.first -%>
+<%-     next nil if matched.nil? -%>
+<%-     matched.sub(File.join(@basedir, search_dir, ''), '') -%>
 <%-   end -%>
-<%-   primary = resolve.call(dir, raw) || raw -%>
-<%-   fallback = resolve.call('images', raw) || raw -%>
-<%-   if dir != 'images' -%>
+<%-   primary_image = find_image.call(imagedir) || backcover -%>
+<%-   fallback_image = find_image.call('images') || backcover -%>
+<%-   if imagedir != 'images' -%>
 <%-     begin -%>
-<%-       src = File.join(@basedir, 'images', fallback) -%>
-<%-       dst = File.join(@path, 'images', fallback) -%>
-<%-       FileUtils.mkdir_p(File.dirname(dst)) -%>
-<%-       FileUtils.cp(src, dst) if File.file?(src) && !File.file?(dst) -%>
-<%-     rescue -%>
+<%-       staged = File.join(@path, 'images', fallback_image) -%>
+<%-       FileUtils.mkdir_p(File.dirname(staged)) -%>
+<%-       FileUtils.cp(File.join(@basedir, 'images', fallback_image), staged) unless File.file?(staged) -%>
+<%-     rescue StandardError -%>
 <%-     end -%>
 <%-   end -%>
-\def\techbooster@coverimage{./<%= dir %>/<%= primary %>}
-\def\techbooster@coverimagefallback{./images/<%= fallback %>}
+\def\techbooster@coverimage{./<%= imagedir %>/<%= primary_image %>}
+\def\techbooster@coverimagefallback{./images/<%= fallback_image %>}
 <%- end -%>
 \makeatother

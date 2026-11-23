@@ -8,7 +8,8 @@
 <%-   find_image = lambda do |search_dir| -%>
 <%-     exact = File.join(@basedir, search_dir, backcover) -%>
 <%-     return backcover if File.file?(exact) -%>
-<%-     matched = Dir[File.join(@basedir, search_dir, backcover + '.*')].sort.first -%>
+<%-     escaped = backcover.gsub(/([*?\[\]{}])/) { |m| '\\' + m } -%>
+<%-     matched = Dir[File.join(@basedir, search_dir, escaped + '.*')].sort.first -%>
 <%-     next nil if matched.nil? -%>
 <%-     matched.sub(File.join(@basedir, search_dir, ''), '') -%>
 <%-   end -%>

@@ -3,6 +3,29 @@
 \recls@coverfitpagetrue
 <%- end -%>
 <%- if @config['techbooster'] && @config['techbooster']['backcoverimage'] -%>
-\def\techbooster@coverimage{images/<%= @config['techbooster']['backcoverimage'] %>}
+<%-   backcover = @config['techbooster']['backcoverimage'].to_s -%>
+<%-   imagedir = (@config['imagedir'] || 'images').to_s.chomp('/') -%>
+<%-   find_image = lambda do |search_dir| -%>
+<%-     exact = File.join(@basedir, search_dir, backcover) -%>
+<%-     return backcover if File.file?(exact) -%>
+<%-     escaped = backcover.gsub(/([*?\[\]{}])/) { |m| '\\' + m } -%>
+<%-     glob_dir = File.join(@basedir, search_dir).gsub(/([*?\[\]{}])/) { |m| '\\' + m } -%>
+<%-     allowed = %w[.png .gif .jpg .jpeg .svg .pdf .eps .ai .tif .tiff .psd] -%>
+<%-     matched = Dir[File.join(glob_dir, escaped + '.*')].select { |p| File.file?(p) && allowed.include?(File.extname(p).downcase) }.sort.first -%>
+<%-     next nil if matched.nil? -%>
+<%-     matched.sub(File.join(@basedir, search_dir, ''), '') -%>
+<%-   end -%>
+<%-   primary_image = find_image.call(imagedir) || backcover -%>
+<%-   fallback_image = find_image.call('images') || backcover -%>
+<%-   if imagedir != 'images' -%>
+<%-     begin -%>
+<%-       staged = File.join(@path, 'images', fallback_image) -%>
+<%-       FileUtils.mkdir_p(File.dirname(staged)) -%>
+<%-       FileUtils.cp(File.join(@basedir, 'images', fallback_image), staged) unless File.file?(staged) -%>
+<%-     rescue StandardError -%>
+<%-     end -%>
+<%-   end -%>
+\def\techbooster@coverimage{./<%= imagedir %>/<%= primary_image %>}
+\def\techbooster@coverimagefallback{./images/<%= fallback_image %>}
 <%- end -%>
 \makeatother

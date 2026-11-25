@@ -18,10 +18,10 @@
     },
     "yomiyasu": {
       "source": "nanaism/yomiyasu",
-      "commit": "fbd4e420fb71a6ba90f475898cf611ccb6a08cb2",
+      "commit": "3979c750b5e1fe9892bd47bb354f0fb51d534ff2",
       "sourceType": "github",
       "skillPath": "skills/yomiyasu/SKILL.md",
-      "computedHash": "7b47ceca68a2f8027290dfc289e01c24073ad21353a1f589e867324f6bdf7cf9",
+      "computedHash": "cbce4c2feb9fe12deea34ed6b9c65c04fc218bff71f4e35b1b6a62a2e80aca1e",
       "via": "."
     }
   }
